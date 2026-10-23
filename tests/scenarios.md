@@ -30,10 +30,10 @@ the plugin, then run each prompt in a new chat with an image of a room attached.
 | Other project | Read operation `<id>` from a project the account cannot access. | Not found; the operation's existence is not revealed. |
 | No credits | (account with billing blocked) Estimate the camera and depth for this photo. | Refused with the billing message; no operation starts and no purchase flow is offered. |
 
-## Codex (hosted tools, local file)
+## Codex and Claude Code (hosted tools, local file)
 
-Use the same review account, with World Labs connected in Codex and a room photo in the working
-directory.
+Use the same review account and a room photo in the working directory. Connect World Labs in
+Codex, or in Claude Code through `/mcp` after installing the plugin. Run each scenario in both.
 
 | Scenario | Prompt | Expected observation |
 | --- | --- | --- |

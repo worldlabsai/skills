@@ -35,6 +35,16 @@ claude plugin install worldlabs@worldlabs
 
 Start a new session and invoke `/worldlabs:worldlabs` or `/worldlabs:atlas-blender`.
 
+The plugin also adds the hosted World Labs MCP server. Run `/mcp`, select `worldlabs`, and sign in
+with your World Labs account to estimate a camera and depth without an API key. The CLI covers the
+other tasks.
+
+### Claude
+
+In Claude on the web or desktop, add a custom connector in **Settings > Connectors** with the URL
+`https://api.atlas-beta.worldlabs.ai/mcp`, then sign in with your World Labs account. Claude in a
+chat cannot upload a file you attach, so give it a public image URL to import.
+
 ## Set up the tools
 
 ### World Labs API
