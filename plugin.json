@@ -7,7 +7,7 @@
     "com.openai": {
       "interface": {
         "displayName": "World Labs",
-        "shortDescription": "Create with Atlas and Blender",
+        "shortDescription": "Estimate cameras and depth with Atlas",
         "developerName": "World Labs",
         "category": "Productivity",
         "composerIcon": "./assets/worldlabs-logo.png",
@@ -15,11 +15,11 @@
         "websiteURL": "https://www.worldlabs.ai",
         "privacyPolicyURL": "https://www.worldlabs.ai/privacy-policy",
         "termsOfServiceURL": "https://www.worldlabs.ai/terms-of-service",
-        "longDescription": "Use the World Labs CLI to generate and edit images, estimate cameras and depth, and work with API tasks and assets. Atlas for Blender imports calibrated projects, poses images, generates views with Atlas or Chisel, and creates native Gaussian splats. API workflows require Node.js 24+, the World Labs CLI, and an API key with task access. Blender workflows require Blender 5.3+ with Atlas enabled; Blender MCP is recommended, with ordinary Blender Python as an alternative. Splats require internal API access. Tools are installed separately from this plugin.",
+        "longDescription": "Connect your World Labs account to estimate a camera, depth, and confidence from an image of a scene. Results use your project's World Labs Developer API credits. Use the World Labs CLI to generate and edit images, estimate cameras and depth, and work with API tasks and assets. Atlas for Blender imports calibrated projects, poses images, generates views with Atlas or Chisel, and creates native Gaussian splats. API workflows require Node.js 24+, the World Labs CLI, and an API key with task access. Blender workflows require Blender 5.3+ with Atlas enabled; Blender MCP is recommended, with ordinary Blender Python as an alternative. Splats require internal API access. Tools are installed separately from this plugin.",
         "defaultPrompt": [
-          "Show me which World Labs API tasks are available.",
-          "Inspect the frames in my open Atlas Blender scene.",
-          "Import and inspect a calibrated Atlas project in Blender."
+          "Estimate the camera and depth for this photo of my room.",
+          "Show me which World Labs projects I can use.",
+          "Show me which World Labs API tasks are available."
         ]
       }
     }
