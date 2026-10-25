@@ -8,6 +8,8 @@ license: Apache-2.0
 
 Enable Atlas in Blender 5.3+; see [setup](references/setup.md) for installation and read-only verification. [Blender MCP](https://www.blender.org/lab/mcp-server/) is strongly recommended for agent access, but optional; agents can also run Python through Blender’s Python Console, Text Editor, or command line.
 
+If this host has no access to Blender, explain the local requirements instead of attempting Blender operations.
+
 Run Atlas's operators inside Blender's Python environment. Read [commands](references/commands.md) when you need call syntax, import formats, or job handling.
 
 Import exports containing camera JSON, images, depth, and confidence directly; they already have poses. Inspect unfamiliar layouts rather than assuming an exact folder structure or re-posing calibrated images.

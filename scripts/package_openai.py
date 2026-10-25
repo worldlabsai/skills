@@ -1,8 +1,8 @@
 """Build the ZIP submitted to the OpenAI plugin directory.
 
-The hosted listing reaches World Labs through the MCP server in mcp.json. It
-leaves out atlas-blender, which drives a local Blender session and cannot run
-in ChatGPT; local installs from this repository keep it.
+Bundle the hosted MCP connection and every repository skill with its supporting
+files. Local Blender workflows still require a compatible Blender environment;
+bundling their instructions does not install Blender or its extension.
 
 Usage: python3 scripts/package_openai.py [output.zip]
 """
@@ -18,7 +18,7 @@ INCLUDE = [
     "LICENSE",
     "assets/worldlabs-logo.png",
     "assets/worldlabs-logo.svg",
-    "skills/worldlabs",
+    "skills",
 ]
 
 
@@ -28,7 +28,12 @@ def main() -> None:
     with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
         for entry in INCLUDE:
             path = ROOT / entry
-            files = sorted(p for p in path.rglob("*") if p.is_file()) if path.is_dir() else [path]
+            files = sorted(
+                p for p in path.rglob("*")
+                if p.is_file()
+                and not any(part.startswith(".") or part == "__pycache__" for part in p.relative_to(path).parts)
+                and p.suffix not in {".pyc", ".pyo"}
+            ) if path.is_dir() else [path]
             for file in files:
                 archive.write(file, file.relative_to(ROOT).as_posix())
     print(output)

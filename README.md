@@ -14,8 +14,10 @@ Agent skills for the World Labs API and Atlas for Blender, packaged as one plugi
 ### ChatGPT
 
 Install World Labs from the ChatGPT plugin directory and connect your World Labs account. The hosted
-plugin estimates a camera and depth from an image; it does not include the Blender skill, which needs
-a local Blender session. `python3 scripts/package_openai.py` builds that submission ZIP.
+connection estimates a camera and depth from an image. `python3 scripts/package_openai.py` builds
+the submission ZIP with both repository skills and all their supporting files. The Atlas for Blender
+skill requires a compatible local Blender environment; it cannot control Blender from a hosted chat
+without that access. The ZIP does not install Blender, its extension, or the World Labs CLI.
 
 ### Codex
 
@@ -66,9 +68,9 @@ Atlas requires Blender 5.3+ and a separately installed Atlas extension. Blender 
 recommended for agent access; Blender's Python Console, Text Editor, or background Python also work.
 Gaussian splats require internal API access.
 
-This skill targets the unreleased Blender Python API. Use an updated supplied extension build;
-the currently published ZIP still uses the old CLI. See [setup](skills/atlas-blender/references/setup.md)
-for installation and a read-only compatibility check.
+Install [Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
+for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)
+for installation, checksums, and a read-only compatibility check.
 
 ## Try it
 
