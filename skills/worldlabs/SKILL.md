@@ -32,6 +32,8 @@ Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires 
 
 Read [How To Use Atlas](https://marble5.worldlabs.ai/docs/how-to-use-atlas) before choosing model inputs, calculating cameras, or chaining tasks. It explains scene data, model behavior, and the requirements that affect results. Follow its task or camera links when you need exact fields or geometry calculations. `worldlabs tasks list` reports SDK task names; account access can differ.
 
+For videos and flythroughs, read [Generate a video or camera path](https://marble5.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path) before submitting. Keep the complete ordered trajectory in one `atlasGenerate` request so Atlas can share generated context across the sequence. Do not independently batch frames or splice preview outputs into the final sequence; reusing a seed does not preserve continuity across separate requests.
+
 ### Submit and inspect
 
 Upload a local image:
