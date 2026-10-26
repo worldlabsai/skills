@@ -103,3 +103,23 @@ Copyright 2026 World Labs Technologies, Inc.
 The skills and helper code in this repository are licensed under [Apache-2.0](LICENSE).
 World Labs names and logos remain trademarks of their respective owners. The World Labs API
 and separately distributed Blender add-on are governed by their own terms and licenses.
+
+## Publish to the Claude directory
+
+The plugin bundle and the hosted MCP connector are separate submissions in
+[Anthropic's developer portal](https://claude.ai/directory/manage). A plugin submission does not
+submit its referenced MCP server for a connector listing. The connector can be submitted while
+the plugin is under review; plugin approval or publication is not a prerequisite.
+
+1. Test the hosted endpoint as a custom Claude connector, including sign-in and each tool, before
+   submitting it for review.
+2. Submit `https://api.atlas-beta.worldlabs.ai/mcp` as an **MCP connector**, using the same
+   organization that owns the World Labs plugin submission.
+3. Keep the existing plugin submission pointed at the intended release branch containing
+   `.mcp.json`. Check the portal's reviewed commit/version when updating a pending submission;
+   pushing a PR does not update the tracked branch or confirm that reviewers have the new version.
+4. Pair the connector and plugin listings in the portal. Keep the endpoint URL identical in the
+   connector listing and `.mcp.json` so users who install both get one set of tools.
+
+See [Anthropic's plugin and connector submission guidance](https://claude.com/docs/directory/publish#submit-your-plugin-and-your-mcp-server-as-a-connector)
+and [connector review requirements](https://claude.com/docs/connectors/building/submission).
