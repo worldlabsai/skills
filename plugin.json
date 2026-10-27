@@ -1,26 +1,83 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "worldlabs",
-  "version": "0.1.0",
-  "description": "Use World Labs APIs and Atlas for Blender",
+  "version": "0.1.1",
+  "description": "Prepare images for 3D workflows with World Labs",
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "World Labs",
-        "shortDescription": "Create with Atlas and Blender",
+        "shortDescription": "Create new worlds with Atlas",
         "developerName": "World Labs",
-        "category": "Productivity",
+        "category": "Creativity",
         "composerIcon": "./assets/worldlabs-logo.png",
         "logo": "./assets/worldlabs-logo.png",
         "websiteURL": "https://www.worldlabs.ai",
         "privacyPolicyURL": "https://www.worldlabs.ai/privacy-policy",
         "termsOfServiceURL": "https://www.worldlabs.ai/terms-of-service",
-        "longDescription": "Use the World Labs CLI to generate and edit images, estimate cameras and depth, and work with API tasks and assets. Atlas for Blender imports calibrated projects, poses images, generates views with Atlas or Chisel, and creates native Gaussian splats. API workflows require Node.js 24+, the World Labs CLI, and an API key with task access. Blender workflows require Blender 5.3+ with Atlas enabled; Blender MCP is recommended, with ordinary Blender Python as an alternative. Splats require internal API access. Tools are installed separately from this plugin.",
+        "longDescription": "Prepare images for 3D workflows by estimating camera parameters, depth, and confidence with World Labs. Connect your account, choose a project, and retrieve results and downloadable assets. Estimation uses your project's World Labs Developer API credits and requires access to the camera and depth tool. With local shell access, the separately installed World Labs CLI supports additional image generation and editing tasks and requires Node.js 24+ and an API key. The included Blender skill uses World Labs' Atlas extension to import calibrated projects, pose images, and generate views. It requires local access to Blender 5.3+ and the separately installed Atlas extension version 0.1.1 or newer. Gaussian splats require internal API access. Local Blender workflows are unavailable in hosted chats without access to Blender.",
         "defaultPrompt": [
-          "Show me which World Labs API tasks are available.",
-          "Inspect the frames in my open Atlas Blender scene.",
-          "Import and inspect a calibrated Atlas project in Blender."
-        ]
+          "Estimate the camera and depth for this photo of my room.",
+          "Show me which World Labs projects I can use.",
+          "Check the status of my World Labs estimation operation."
+        ],
+        "supportURL": "https://docs.worldlabs.ai/marble/support"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Connect",
+              "prompt": "Show me which World Labs projects I can use.",
+              "expected_behavior": "Sign-in and consent complete in the browser; `list_projects` returns the account's projects with `estimate_camera_depth` available. No key is requested in chat.",
+              "tools_triggered": "list_projects"
+            },
+            {
+              "description": "Estimate camera and depth from an attached scene photo.",
+              "prompt": "Estimate the camera and depth for this photo.",
+              "expected_behavior": "`import_image`, then the project and credit use are named before `estimate_camera_depth`; `get_operation` polls to done and reports the camera, depth-grid size, and download links.",
+              "tools_triggered": "list_projects, import_image, estimate_camera_depth, get_operation"
+            },
+            {
+              "description": "After the estimate case completes, check its returned operation ID and project ID in a new chat.",
+              "prompt": "(new chat) Check on operation `<id>` in project `<project>`.",
+              "expected_behavior": "`get_operation` returns the same operation; nothing is resubmitted.",
+              "tools_triggered": "get_operation"
+            },
+            {
+              "description": "After the estimate case, retry the same image request in the same chat with the original idempotency key.",
+              "prompt": "Retry that estimate with the same image and the same idempotency key. Do not start a new request.",
+              "expected_behavior": "estimate_camera_depth returns the original operation ID for the same project, image, and idempotency key; no duplicate operation is created.",
+              "tools_triggered": "estimate_camera_depth"
+            },
+            {
+              "description": "After the estimate case, request a download link for its depth asset again.",
+              "prompt": "Give me the depth file again.",
+              "expected_behavior": "get_asset returns a valid download link for the same depth asset. It may reuse a cached link while valid and renews it near expiry; the returned link downloads the depth file successfully.",
+              "tools_triggered": "get_asset"
+            }
+          ],
+          "negative": [
+            {
+              "description": "A conceptual camera question requires no account access or image processing. Answer directly without invoking World Labs tools.",
+              "prompt": "Explain camera intrinsics versus extrinsics. Do not process any images or access my account.",
+              "expected_behavior": "Explain the concepts without calling World Labs tools."
+            },
+            {
+              "description": "A photography question about depth of field does not require estimating scene depth. Answer directly without invoking World Labs tools.",
+              "prompt": "How does aperture affect depth of field in a portrait?",
+              "expected_behavior": "Explain aperture and depth of field without calling World Labs tools."
+            },
+            {
+              "description": "The connected tools cannot change billing details. Explain the limitation without attempting unrelated tool calls.",
+              "prompt": "Change the billing address on my World Labs account.",
+              "expected_behavior": "Explain that billing-address changes are unsupported by the connected tools and direct the user to account settings or support; do not call World Labs tools."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Initial release: connect World Labs for camera and depth estimation and result downloads. Includes World Labs API guidance and Atlas for Blender Python workflows, with separate local tool and extension requirements."
       }
     }
   },

@@ -1,16 +1,15 @@
 # Set up Atlas for Blender
 
 Requires Blender 5.3 or newer. Gaussian splats require internal API access.
-The Atlas extension is installed separately from this agent plugin. This skill requires an updated
-supplied build with `bpy.ops.atlas.command`. The published
-[ZIP](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.0.zip) and
-[checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/SHA256SUMS) still point to the older
-CLI build; use the supplied preview until that download is updated.
+The Atlas extension is installed separately from this agent plugin. Download
+[Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
+([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip.sha256)).
+Version 0.1.1 includes the Blender Python commands used by this skill; upgrade older installations.
 
 ## Install and configure
 
 1. In the intended Blender installation, open **Preferences > Get Extensions > Install from Disk**;
-   select the supplied extension ZIP and enable Atlas.
+   select `worldlabs_atlas-0.1.1.zip` and enable Atlas. Confirm version **0.1.1** in the extension details.
 2. For online posing and generation, enable **Allow Online Access** in Blender Preferences and
    enter the World Labs API key in the Atlas sidebar under **Settings > Connection**. Local imports
    work offline. Keep keys out of chat.
