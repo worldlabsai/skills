@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "worldlabs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Prepare images for 3D workflows with World Labs",
   "extensions": {
     "com.openai": {
