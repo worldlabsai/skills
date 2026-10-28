@@ -54,7 +54,7 @@ chat cannot upload a file you attach, so give it a public image URL to import.
 Install the CLI with Node.js 24 or newer:
 
 ```sh
-npm install -g @worldlabsai/cli@0.1.0
+npm install -g @worldlabsai/cli@0.3.0
 worldlabs auth login
 worldlabs tasks list --json
 ```
@@ -66,7 +66,7 @@ shell. Task availability depends on your account's access.
 
 Atlas requires Blender 5.3+ and a separately installed Atlas extension. Blender MCP is strongly
 recommended for agent access; Blender's Python Console, Text Editor, or background Python also work.
-Gaussian splats require internal API access.
+Gaussian splats require Marble 2 beta access.
 
 Install [Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)

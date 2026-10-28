@@ -1,6 +1,6 @@
 # Set up Atlas for Blender
 
-Requires Blender 5.3 or newer. Gaussian splats require internal API access.
+Requires Blender 5.3 or newer. Gaussian splats require Marble 2 beta access.
 The Atlas extension is installed separately from this agent plugin. Download
 [Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
 ([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip.sha256)).

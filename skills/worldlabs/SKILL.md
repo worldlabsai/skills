@@ -1,6 +1,6 @@
 ---
 name: worldlabs
-description: Generate and edit scene images, estimate cameras and depth, or extract meshes with World Labs, through its connected tools or its CLI.
+description: Generate and edit scene images, estimate cameras and depth, reconstruct Gaussian splats, or extract meshes with World Labs, through its connected tools or its CLI.
 license: Apache-2.0
 ---
 
@@ -17,7 +17,7 @@ license: Apache-2.0
 
 ## Use the CLI
 
-Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires Node 24+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.1.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax.
+Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires Node 24+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.3.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax.
 
 ### Choose a task
 
@@ -28,11 +28,14 @@ Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires 
 | `atlasGenerate` | Generate new viewpoints using posed RGBD context. |
 | `atlasChisel` | Generate posed images from a prompt and optional depth layouts. |
 | `atlasMasked` | Fill masked regions across posed images. |
+| `posedImages2Splats` | Reconstruct a refined Gaussian splat from posed RGBD images. |
 | `splats2Mesh` | Extract a mesh from a Gaussian splat scene. |
 
 Read [How To Use Atlas](https://marble5.worldlabs.ai/docs/how-to-use-atlas) before choosing model inputs, calculating cameras, or chaining tasks. It explains scene data, model behavior, and the requirements that affect results. Follow its task or camera links when you need exact fields or geometry calculations. `worldlabs tasks list` reports SDK task names; account access can differ.
 
 For videos and flythroughs, read [Generate a video or camera path](https://marble5.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path) before submitting. Keep the complete ordered trajectory in one `atlasGenerate` request so Atlas can share generated context across the sequence. Do not independently batch frames or splice preview outputs into the final sequence; reusing a seed does not preserve continuity across separate requests.
+
+For `posedImages2Splats`, give every frame its depth (`depth.depthAsset`, as `images2PosedRGBD` returns), and prefer at least 8 frames for a compact scene and 16 or more for a larger one. A run can take an hour or more, longer than the CLI's default 600-second timeout: pass `--timeout 14400` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 14400 --json`. The response's `refinedSplats` maps splat counts to SPZ assets.
 
 ### Submit and inspect
 
