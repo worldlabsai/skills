@@ -68,7 +68,7 @@ Atlas requires Blender 5.3+ and a separately installed Atlas extension. Blender 
 recommended for agent access; Blender's Python Console, Text Editor, or background Python also work.
 Gaussian splats require Marble 2 beta access.
 
-Install [Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
+Install [Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)
 for installation, checksums, and a read-only compatibility check.
 

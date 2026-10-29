@@ -2,14 +2,14 @@
 
 Requires Blender 5.3 or newer. Gaussian splats require Marble 2 beta access.
 The Atlas extension is installed separately from this agent plugin. Download
-[Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
-([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip.sha256)).
-Version 0.1.1 includes the Blender Python commands used by this skill; upgrade older installations.
+[Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
+([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip.sha256)).
+Version 0.1.2 includes the Blender Python commands used by this skill and creates refined splats by default; upgrade older installations.
 
 ## Install and configure
 
 1. In the intended Blender installation, open **Preferences > Get Extensions > Install from Disk**;
-   select `worldlabs_atlas-0.1.1.zip` and enable Atlas. Confirm version **0.1.1** in the extension details.
+   select `worldlabs_atlas-0.1.2.zip` and enable Atlas. Confirm version **0.1.2** in the extension details.
 2. For online posing and generation, enable **Allow Online Access** in Blender Preferences and
    enter the World Labs API key in the Atlas sidebar under **Settings > Connection**. Local imports
    work offline. Keep keys out of chat.

@@ -12,7 +12,7 @@ version, selected skill, and observed result. Keep API and Blender checks separa
 | Import and pose | Import this camera/image/depth project into Blender and inspect the result. | Uses `project.import` for calibrated exports, preserving their poses; uses `pose` only for unposed images and reports job status without blocking Blender's event loop. |
 | Scene placement | Arrange these independently posed images into a coherent scene. | Reads scene-placement concepts, chooses its own placement and inspection methods, and may toggle point clouds or inspect camera views. Does not require a numerical alignment procedure. |
 | Atlas generation | Generate views from the visible Atlas cameras in this scene. | Calls normal generation Atlas and depth-conditioned generation Chisel; uses actual camera names and reports online access or API errors clearly. |
-| Gaussian splat | Create a native Gaussian splat from my Atlas context images. | Checks Blender 5.3+ and Marble 2 beta access, and passes `refine=True`. Usually gathers at least 8 context views for a compact scene and 16 or more for a larger scene, with usable depth and matching resolution; distinguishes this guidance from the endpoint's two-image lower limit. |
+| Gaussian splat | Create a native Gaussian splat from my Atlas context images. | Checks Blender 5.3+, Atlas 0.1.2 and Marble 2 beta access. Usually gathers at least 8 context views for a compact scene and 16 or more for a larger scene, with usable depth and matching resolution; distinguishes this guidance from the endpoint's two-image lower limit. |
 
 ## ChatGPT (hosted tools)
 
