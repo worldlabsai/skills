@@ -75,8 +75,9 @@ are involved, and this plugin installs none of them:
 3. The Atlas add-on, installed separately inside Blender. The `atlas-blender` skill tells the agent
    how to use it.
 
-Blender MCP is recommended, not required: the Atlas commands also run through Blender's Python
-Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
+Blender MCP is the recommended way for an agent to work in Blender, and the skill offers to install
+and configure it when it is missing. It is not strictly required: the Atlas commands also run
+through Blender's Python Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
 the Atlas add-on and this skill.
 
 Install [Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)

@@ -14,8 +14,10 @@ This plugin installs none of them and does not configure Blender MCP.
 
 ## Connect an agent through Blender MCP
 
-Blender MCP is recommended, not required. Without it, run the Atlas commands through Blender's
-Python Console, Text Editor, or command line.
+Use Blender MCP: it is the recommended way for an agent to work in Blender. If it is not set up,
+ask the user whether they want you to install and configure it for them, then follow the steps
+below for their client. It is not strictly required; without it, the Atlas commands also run
+through Blender's Python Console, Text Editor, or command line.
 
 - **Claude Desktop:** Claude's Blender integration uses the same Blender-developed MCP
   implementation, not a separate one
