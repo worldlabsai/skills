@@ -26,7 +26,7 @@ Read the documentation before submitting work. It is maintained with the API; wh
 - [Generate a video or camera path](https://atlas-beta.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path): read before any video or flythrough.
 - [Splat best practices](https://atlas-beta.worldlabs.ai/docs/splat-best-practices): read before `posedImages2Splats`.
 
-A `posedImages2Splats` run usually takes about 20 minutes, longer than the CLI's default 600-second timeout: pass `--timeout 3600` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 3600 --json`.
+A `posedImages2Splats` run usually takes about 20 minutes. Submit it without `--wait`, keep the operation ID, and check on it with `worldlabs operations wait <operation-id> --json` until it is done. Don't resubmit while it runs.
 
 ### Authentication
 
