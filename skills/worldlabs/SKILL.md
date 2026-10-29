@@ -28,7 +28,7 @@ Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires 
 | `atlasGenerate` | Generate new viewpoints using posed RGBD context. |
 | `atlasChisel` | Generate posed images from a prompt and optional depth layouts. |
 | `atlasMasked` | Fill masked regions across posed images. |
-| `posedImages2Splats` | Reconstruct a refined Gaussian splat from posed RGBD images. |
+| `posedImages2Splats` | Reconstruct refined Gaussian splats from posed RGBD images. |
 | `splats2Mesh` | Extract a mesh from a Gaussian splat scene. |
 
 Read [How To Use Atlas](https://marble5.worldlabs.ai/docs/how-to-use-atlas) before choosing model inputs, calculating cameras, or chaining tasks. It explains scene data, model behavior, and the requirements that affect results. Follow its task or camera links when you need exact fields or geometry calculations. `worldlabs tasks list` reports SDK task names; account access can differ.
