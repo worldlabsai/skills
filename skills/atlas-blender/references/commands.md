@@ -57,7 +57,7 @@ regions. Use visible, depth-ready images at the same resolution. The endpoint ac
 but that is a technical lower limit, not the usual context target.
 
 Pass `refine=True`. The extension defaults to a draft, which only internal accounts can run; the
-refinement takes an hour or more.
+refinement usually takes 10 to 20 minutes.
 The result imports as a native Gaussian splat object saved in the `.blend`. `jobs.import` returns
 `objectNames` for splats; image jobs return `frameIds`.
 

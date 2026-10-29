@@ -35,7 +35,7 @@ Read [How To Use Atlas](https://marble5.worldlabs.ai/docs/how-to-use-atlas) befo
 
 For videos and flythroughs, read [Generate a video or camera path](https://marble5.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path) before submitting. Keep the complete ordered trajectory in one `atlasGenerate` request so Atlas can share generated context across the sequence. Do not independently batch frames or splice preview outputs into the final sequence; reusing a seed does not preserve continuity across separate requests.
 
-For `posedImages2Splats`, give every frame its depth (`depth.depthAsset`, as `images2PosedRGBD` returns), and prefer at least 8 frames for a compact scene and 16 or more for a larger one. A run can take an hour or more, longer than the CLI's default 600-second timeout: pass `--timeout 14400` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 14400 --json`. The response's `refinedSplats` maps splat counts to SPZ assets.
+For `posedImages2Splats`, give every frame its depth (`depth.depthAsset`, as `images2PosedRGBD` returns), and prefer at least 8 frames for a compact scene and 16 or more for a larger one. A run usually takes 10 to 20 minutes, longer than the CLI's default 600-second timeout: pass `--timeout 3600` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 3600 --json`. The response's `refinedSplats` maps splat counts to SPZ assets.
 
 ### Submit and inspect
 
