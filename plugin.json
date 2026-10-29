@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "worldlabs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Prepare images for 3D workflows with World Labs",
   "extensions": {
     "com.openai": {
@@ -15,7 +15,7 @@
         "websiteURL": "https://www.worldlabs.ai",
         "privacyPolicyURL": "https://www.worldlabs.ai/privacy-policy",
         "termsOfServiceURL": "https://www.worldlabs.ai/terms-of-service",
-        "longDescription": "Prepare images for 3D workflows by estimating camera parameters, depth, and confidence with World Labs. Connect your account, choose a project, and retrieve results and downloadable assets. Estimation uses your project's World Labs Developer API credits and requires access to the camera and depth tool. With local shell access, the separately installed World Labs CLI supports additional image generation and editing tasks and requires Node.js 24+ and an API key. The included Blender skill uses World Labs' Atlas extension to import calibrated projects, pose images, and generate views. It requires local access to Blender 5.3+ and the separately installed Atlas extension version 0.1.1 or newer. Gaussian splats require internal API access. Local Blender workflows are unavailable in hosted chats without access to Blender.",
+        "longDescription": "Turn photos into 3D-ready scenes with World Labs. Estimate the camera and depth of an image and download the results. Generate and edit scene images, create new views with Atlas, reconstruct Gaussian splats, and extract meshes. In Blender 5.3 or newer, use the Atlas extension to import calibrated projects, pose images, generate views, and build splats in your scene.",
         "defaultPrompt": [
           "Estimate the camera and depth for this photo of my room.",
           "Show me which World Labs projects I can use.",

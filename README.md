@@ -51,10 +51,10 @@ chat cannot upload a file you attach, so give it a public image URL to import.
 
 ### World Labs API
 
-Install the CLI with Node.js 24 or newer:
+Install the CLI with Node.js 22 or newer:
 
 ```sh
-npm install -g @worldlabsai/cli@0.1.0
+npm install -g @worldlabsai/cli@0.3.0
 worldlabs auth login
 worldlabs tasks list --json
 ```
@@ -64,11 +64,23 @@ shell. Task availability depends on your account's access.
 
 ### Atlas for Blender
 
-Atlas requires Blender 5.3+ and a separately installed Atlas extension. Blender MCP is strongly
-recommended for agent access; Blender's Python Console, Text Editor, or background Python also work.
-Gaussian splats require internal API access.
+Atlas requires Blender 5.3+. Gaussian splats require Marble 2 beta access. Three separate pieces
+are involved, and this plugin installs none of them:
 
-Install [Atlas 0.1.1](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.1.zip)
+1. The Blender MCP add-on, installed inside Blender.
+2. The Blender MCP server or connector, configured in your agent client. In Claude Desktop, add
+   **Customize > Connectors > Blender > Add**; Claude's Blender connector uses the same
+   Blender-developed MCP implementation. For other clients, see
+   [Blender's MCP setup](https://www.blender.org/lab/mcp-server/).
+3. The Atlas add-on, installed separately inside Blender. The `atlas-blender` skill tells the agent
+   how to use it.
+
+Blender MCP is the recommended way for an agent to work in Blender, and the skill offers to install
+and configure it when it is missing. It is not strictly required: the Atlas commands also run
+through Blender's Python Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
+the Atlas add-on and this skill.
+
+Install [Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)
 for installation, checksums, and a read-only compatibility check.
 
