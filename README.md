@@ -51,7 +51,7 @@ chat cannot upload a file you attach, so give it a public image URL to import.
 
 ### World Labs API
 
-Install the CLI with Node.js 24 or newer:
+Install the CLI with Node.js 22 or newer:
 
 ```sh
 npm install -g @worldlabsai/cli@0.3.0

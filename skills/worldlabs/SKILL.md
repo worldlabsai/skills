@@ -17,7 +17,7 @@ license: Apache-2.0
 
 ## Use the CLI
 
-Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires Node 24+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.3.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax.
+Use `worldlabs` for the Developer API. The examples use a POSIX shell. Requires Node 22+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.3.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax.
 
 ### Choose a task
 
@@ -35,7 +35,7 @@ Read [How To Use Atlas](https://marble5.worldlabs.ai/docs/how-to-use-atlas) befo
 
 For videos and flythroughs, read [Generate a video or camera path](https://marble5.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path) before submitting. Keep the complete ordered trajectory in one `atlasGenerate` request so Atlas can share generated context across the sequence. Do not independently batch frames or splice preview outputs into the final sequence; reusing a seed does not preserve continuity across separate requests.
 
-For `posedImages2Splats`, give every frame its depth (`depth.depthAsset`, as `images2PosedRGBD` returns), and prefer at least 8 frames for a compact scene and 16 or more for a larger one. A run usually takes 10 to 20 minutes, longer than the CLI's default 600-second timeout: pass `--timeout 3600` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 3600 --json`. The response's `refinedSplats` maps splat counts to SPZ assets.
+For `posedImages2Splats`, give every frame its depth (`depth.depthAsset`, as `images2PosedRGBD` returns), and prefer at least 8 frames for a compact scene and 16 or more for a larger one. A run usually takes about 20 minutes, longer than the CLI's default 600-second timeout: pass `--timeout 3600` with `--wait`, or resume with `worldlabs operations wait <operation-id> --timeout 3600 --json`. The response's `refinedSplats` maps splat counts to SPZ assets.
 
 ### Submit and inspect
 
