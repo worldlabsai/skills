@@ -64,9 +64,20 @@ shell. Task availability depends on your account's access.
 
 ### Atlas for Blender
 
-Atlas requires Blender 5.3+ and a separately installed Atlas extension. Blender MCP is strongly
-recommended for agent access; Blender's Python Console, Text Editor, or background Python also work.
-Gaussian splats require Marble 2 beta access.
+Atlas requires Blender 5.3+. Gaussian splats require Marble 2 beta access. Three separate pieces
+are involved, and this plugin installs none of them:
+
+1. The Blender MCP add-on, installed inside Blender.
+2. The Blender MCP server or connector, configured in your agent client. In Claude Desktop, add
+   **Customize > Connectors > Blender > Add**; Claude's Blender connector uses the same
+   Blender-developed MCP implementation. For other clients, see
+   [Blender's MCP setup](https://www.blender.org/lab/mcp-server/).
+3. The Atlas add-on, installed separately inside Blender. The `atlas-blender` skill tells the agent
+   how to use it.
+
+Blender MCP is recommended, not required: the Atlas commands also run through Blender's Python
+Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
+the Atlas add-on and this skill.
 
 Install [Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)

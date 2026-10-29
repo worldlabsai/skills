@@ -1,20 +1,45 @@
 # Set up Atlas for Blender
 
 Requires Blender 5.3 or newer. Gaussian splats require Marble 2 beta access.
-The Atlas extension is installed separately from this agent plugin. Download
-[Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
+
+An agent works with Atlas in Blender through three separate pieces:
+
+1. **Blender MCP add-on**, installed inside Blender. It lets an agent run Python in the open
+   Blender session.
+2. **Blender MCP server**, configured in the agent client as a connector or MCP server.
+3. **Atlas add-on**, installed separately inside Blender. This plugin's Atlas skill tells the agent
+   how to use it.
+
+This plugin installs none of them and does not configure Blender MCP.
+
+## Connect an agent through Blender MCP
+
+Blender MCP is recommended, not required. Without it, run the Atlas commands through Blender's
+Python Console, Text Editor, or command line.
+
+- **Claude Desktop:** Claude's Blender integration uses the same Blender-developed MCP
+  implementation, not a separate one
+  ([announcement](https://www.anthropic.com/news/claude-for-creative-work)). Add it under
+  **Customize > Connectors > Blender > Add**, then install the Blender-side add-on as
+  [Claude's Blender connector setup](https://academy.claude.com/tutorials/using-the-blender-connector-in-claude)
+  describes.
+- **Other agent clients:** follow [Blender's MCP setup](https://www.blender.org/lab/mcp-server/)
+  for the add-on and the client configuration.
+
+If Blender MCP already works with your agent, you only need the Atlas add-on and this skill.
+
+## Install and configure Atlas
+
+Download [Atlas 0.1.2](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip)
 ([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.2.zip.sha256)).
 Version 0.1.2 includes the Blender Python commands used by this skill and creates refined splats by default; upgrade older installations.
-
-## Install and configure
 
 1. In the intended Blender installation, open **Preferences > Get Extensions > Install from Disk**;
    select `worldlabs_atlas-0.1.2.zip` and enable Atlas. Confirm version **0.1.2** in the extension details.
 2. For online posing and generation, enable **Allow Online Access** in Blender Preferences and
    enter the World Labs API key in the Atlas sidebar under **Settings > Connection**. Local imports
    work offline. Keep keys out of chat.
-3. Keep the Blender project open. Blender MCP is recommended for agent access; Python Console,
-   Text Editor, or background Python also work.
+3. Keep the Blender project open.
 
 ## Verify the add-on
 

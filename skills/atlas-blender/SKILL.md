@@ -6,7 +6,7 @@ license: Apache-2.0
 
 # Atlas for Blender
 
-Enable Atlas in Blender 5.3+; see [setup](references/setup.md) for installation and read-only verification. [Blender MCP](https://www.blender.org/lab/mcp-server/) is strongly recommended for agent access, but optional; agents can also run Python through Blender’s Python Console, Text Editor, or command line.
+Enable Atlas in Blender 5.3+; see [setup](references/setup.md) for installation and read-only verification. Atlas is a separate Blender add-on from Blender MCP. [Blender MCP](https://www.blender.org/lab/mcp-server/) is recommended for agent access but optional, and this plugin neither installs nor configures it; without it, run the Atlas commands through Blender's Python Console, Text Editor, or command line.
 
 If this host has no access to Blender, explain the local requirements instead of attempting Blender operations.
 
