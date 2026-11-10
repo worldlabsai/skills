@@ -18,4 +18,4 @@ When assembling posed images into a shared scene, read [scene placement](referen
 
 Camera visibility controls Atlas context. **Points** toggles point clouds independently. Use ordinary Blender tools and scene state for everything else.
 
-For Atlas concepts, see the [Atlas documentation](https://atlas-beta.worldlabs.ai/docs/how-to-use-atlas).
+For Atlas concepts, see the [Atlas documentation](https://docs.atlas.worldlabs.ai/how-to-use-atlas).

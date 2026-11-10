@@ -56,7 +56,7 @@ scene. Increase coverage with scene size; additional nearly identical views do n
 regions. Use visible, depth-ready images at the same resolution. The endpoint accepts two images,
 but that is a technical lower limit, not the usual context target.
 
-Splats are refined by default and usually take about 20 minutes.
+Splats are refined by default and usually take 10 to 20 minutes.
 The result imports as a native Gaussian splat object saved in the `.blend`. `jobs.import` returns
 `objectNames` for splats; image jobs return `frameIds`.
 

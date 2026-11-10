@@ -20,17 +20,17 @@ license: Apache-2.0
 
 Read the documentation before submitting work on either path. It is maintained with the API; where it differs from this skill, follow the documentation.
 
-- [How to use Atlas](https://atlas-beta.worldlabs.ai/docs/how-to-use-atlas): which task fits, scene data, cameras and depth, and chaining tasks. Follow its links for each task's fields.
-- [Generate a video or camera path](https://atlas-beta.worldlabs.ai/docs/atlas-generate#generate-a-video-or-camera-path): read before any video or flythrough.
-- [Splat best practices](https://atlas-beta.worldlabs.ai/docs/splat-best-practices): read before `posedImages2Splats`.
+- [How to use Atlas](https://docs.atlas.worldlabs.ai/how-to-use-atlas): which task fits, scene data, cameras and depth, and chaining tasks. Follow its links for each task's fields.
+- [Generate a video or camera path](https://docs.atlas.worldlabs.ai/atlas-generate#generate-a-video-or-camera-path): read before any video or flythrough.
+- [Splat best practices](https://docs.atlas.worldlabs.ai/splat-best-practices): read before `posedImages2Splats`.
 
-A `posedImages2Splats` run usually takes about 20 minutes. Keep the operation ID and check on it until it is done, with `get_operation` or `worldlabs operations wait <operation-id> --json`. Don't resubmit while it runs.
+A `posedImages2Splats` run usually takes 10 to 20 minutes. Keep the operation ID and check on it until it is done, with `get_operation` or `worldlabs operations wait <operation-id> --json`. Don't resubmit while it runs.
 
 ## Use the CLI
 
-Use `worldlabs` for the Developer API. Requires Node 22+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@latest` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax and `worldlabs tasks list` for task names; account access can differ.
+Use `worldlabs` for the Developer API. Requires Node 22+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@latest` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax and `worldlabs tasks list` for task names.
 
-The [CLI](https://atlas-beta.worldlabs.ai/docs/cli) guide covers uploading assets, submitting request JSON, retrying with idempotency keys, waiting, and downloading results. Submit a `posedImages2Splats` run without `--wait`.
+The [CLI](https://docs.atlas.worldlabs.ai/cli) guide covers uploading assets, submitting request JSON, retrying with idempotency keys, waiting, and downloading results. Submit a `posedImages2Splats` run without `--wait`.
 
 ### Authentication
 

@@ -1,6 +1,6 @@
 # Set up Atlas for Blender
 
-Requires Blender 5.3 or newer. Gaussian splats require Marble 2 beta access.
+Requires Blender 5.3 or newer.
 
 An agent works with Atlas in Blender through three separate pieces:
 
@@ -32,8 +32,8 @@ If Blender MCP already works with your agent, you only need the Atlas add-on and
 
 ## Install and configure Atlas
 
-Download [Atlas 0.1.3](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip)
-([SHA-256 checksum](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip.sha256)).
+Download [Atlas 0.1.3](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip)
+([SHA-256 checksum](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip.sha256)).
 Version 0.1.3 fixes image imports and Spatial Context restoration, prepares JPEGs in the background,
 and reuses uploaded assets for posing and rendering. Upgrade older installations by downloading
 and installing the new ZIP; installations from disk do not update automatically.
