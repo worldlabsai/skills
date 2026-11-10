@@ -10,6 +10,7 @@ license: Apache-2.0
 
 - If World Labs tools are connected (`list_projects` and a tool per task, such as `images2PosedRGBD` or `atlasGenerate`), use them. A task's tool has the task's name and takes `project_id`, `idempotency_key`, and `request`, the request body the documentation gives for that task.
   - Pick a project from `list_projects` whose `available_tools` include the task; ask when several fit.
+  - If a tool reports that the sign-in has no Atlas account, ask the user to open https://atlas.worldlabs.ai and finish signing up, then call the tool again. Connecting does not create the account; reconnecting is not needed.
   - Get an image into that project before a task needs it. For a file attached in the chat, call `import_image`. For a local file, call `create_image_upload` with its type and exact size, upload the bytes to `upload_url` with an HTTP PUT that sends exactly the returned `headers` (for example `curl -X PUT -H 'content-type: image/jpeg' --upload-file photo.jpg '<upload_url>'`), and use the returned `asset_id`. A request names media as `{"assetId": "<id>"}`, or as `{"url": "<url>"}` for a public file. Never put image bytes in a tool argument.
   - Before starting a task, name the project and say the task uses its World Labs Developer API credits. Reuse the same `idempotency_key` when retrying, and poll `get_operation` until `done`.
   - A task's outputs are assets. Pass one to the next task by its `assetId`, and call `get_asset` for a fresh download link when one has expired.
