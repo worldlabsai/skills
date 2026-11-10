@@ -14,7 +14,8 @@ Agent skills for the World Labs API and Atlas for Blender, packaged as one plugi
 ### ChatGPT
 
 Install World Labs from the ChatGPT plugin directory and connect your World Labs account. The hosted
-connection estimates a camera and depth from an image. The plugin carries both repository skills
+connection runs the Atlas tasks: generating images and views, estimating cameras and depth,
+reconstructing Gaussian splats, and extracting meshes. The plugin carries both repository skills
 and all their supporting files. The Atlas for Blender skill requires a compatible local Blender
 environment; it cannot control Blender from a hosted chat without that access. The plugin does not
 install Blender, its extension, or the World Labs CLI.
@@ -38,13 +39,12 @@ claude plugin install worldlabs@worldlabs
 Start a new session and invoke `/worldlabs:worldlabs` or `/worldlabs:atlas-blender`.
 
 The plugin also adds the hosted World Labs MCP server. Run `/mcp`, select `worldlabs`, and sign in
-with your World Labs account to estimate a camera and depth without an API key. The CLI covers the
-other tasks.
+with your World Labs account to run the same tasks as the CLI without an API key.
 
 ### Claude
 
 In Claude on the web or desktop, add a custom connector in **Settings > Connectors** with the URL
-`https://api.atlas-beta.worldlabs.ai/mcp`, then sign in with your World Labs account. Claude in a
+`https://api.atlas.worldlabs.ai/mcp`, then sign in with your World Labs account. Claude in a
 chat cannot upload a file you attach, so give it a public image URL to import.
 
 ## Set up the tools
@@ -125,7 +125,7 @@ the plugin is under review; plugin approval or publication is not a prerequisite
 
 1. Test the hosted endpoint as a custom Claude connector, including sign-in and each tool, before
    submitting it for review.
-2. Submit `https://api.atlas-beta.worldlabs.ai/mcp` as an **MCP connector**, using the same
+2. Submit `https://api.atlas.worldlabs.ai/mcp` as an **MCP connector**, using the same
    organization that owns the World Labs plugin submission.
 3. Keep the existing plugin submission pointed at the intended release branch containing
    `.mcp.json`. Check the portal's reviewed commit/version when updating a pending submission;
