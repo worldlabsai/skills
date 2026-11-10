@@ -32,14 +32,14 @@ If Blender MCP already works with your agent, you only need the Atlas add-on and
 
 ## Install and configure Atlas
 
-Download [Atlas 0.1.3](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip)
-([SHA-256 checksum](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip.sha256)).
-Version 0.1.3 fixes image imports and Spatial Context restoration, prepares JPEGs in the background,
-and reuses uploaded assets for posing and rendering. Upgrade older installations by downloading
+Download [Atlas 0.1.4](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.4.zip)
+([SHA-256 checksum](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.4.zip.sha256)).
+Version 0.1.4 sends Chisel requests in the current `atlasChisel` format, which earlier versions
+no longer satisfy, and uses `api.atlas.worldlabs.ai` by default. Upgrade older installations by downloading
 and installing the new ZIP; installations from disk do not update automatically.
 
 1. In the intended Blender installation, open **Preferences > Get Extensions > Install from Disk**;
-   select `worldlabs_atlas-0.1.3.zip` and enable Atlas. Confirm version **0.1.3** in the extension details.
+   select `worldlabs_atlas-0.1.4.zip` and enable Atlas. Confirm version **0.1.4** in the extension details.
 2. For online posing and generation, enable **Allow Online Access** in Blender Preferences and
    enter the World Labs API key in the Atlas sidebar under **Settings > Connection**. Local imports
    work offline. Keep keys out of chat.

@@ -80,7 +80,7 @@ and configure it when it is missing. It is not strictly required: the Atlas comm
 through Blender's Python Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
 the Atlas add-on and this skill.
 
-Install [Atlas 0.1.3](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip)
+Install [Atlas 0.1.4](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.4.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)
 for installation, checksums, and a read-only compatibility check.
 
