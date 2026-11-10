@@ -17,7 +17,7 @@ license: Apache-2.0
 
 ## Use the CLI
 
-Use `worldlabs` for the Developer API. Requires Node 22+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.3.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax and `worldlabs tasks list` for task names; account access can differ.
+Use `worldlabs` for the Developer API. Requires Node 22+ and `@worldlabsai/cli`. If `worldlabs` is missing, locate the user-provided CLI executable or install `@worldlabsai/cli@0.4.0` with npm. Use the resolved executable consistently; do not assume plugin installation installs the CLI. Run `worldlabs --help` for command syntax and `worldlabs tasks list` for task names; account access can differ.
 
 Read the documentation before submitting work. It is maintained with the API; where it differs from this skill, follow the documentation.
 
