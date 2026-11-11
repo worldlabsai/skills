@@ -1,0 +1,13 @@
+{
+  "frames": [
+    {
+      "imageAsset": {
+        "assetId": "<uploaded image asset id>"
+      }
+    }
+  ],
+  "targetResolution": [
+    1280,
+    720
+  ]
+}
