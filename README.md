@@ -14,7 +14,8 @@ Agent skills for the World Labs API and Atlas for Blender, packaged as one plugi
 ### ChatGPT
 
 Install World Labs from the ChatGPT plugin directory and connect your World Labs account. The hosted
-connection estimates a camera and depth from an image. The plugin carries both repository skills
+connection runs the Atlas tasks: generating images and views, estimating cameras and depth,
+reconstructing Gaussian splats, and extracting meshes. The plugin carries both repository skills
 and all their supporting files. The Atlas for Blender skill requires a compatible local Blender
 environment; it cannot control Blender from a hosted chat without that access. The plugin does not
 install Blender, its extension, or the World Labs CLI.
@@ -38,8 +39,7 @@ claude plugin install worldlabs@worldlabs
 Start a new session and invoke `/worldlabs:worldlabs` or `/worldlabs:atlas-blender`.
 
 The plugin also adds the hosted World Labs MCP server. Run `/mcp`, select `worldlabs`, and sign in
-with your World Labs account to estimate a camera and depth without an API key. The CLI covers the
-other tasks.
+with your World Labs account to run the same tasks as the CLI without an API key.
 
 ### Claude
 
@@ -60,11 +60,11 @@ worldlabs tasks list --json
 ```
 
 Enter your API key in the CLI's private prompt. Make sure `worldlabs` is available in the agent's
-shell. Task availability depends on your account's access.
+shell.
 
 ### Atlas for Blender
 
-Atlas requires Blender 5.3+. Gaussian splats require Marble 2 beta access. Three separate pieces
+Atlas requires Blender 5.3+. Three separate pieces
 are involved, and this plugin installs none of them:
 
 1. The Blender MCP add-on, installed inside Blender.
@@ -80,7 +80,7 @@ and configure it when it is missing. It is not strictly required: the Atlas comm
 through Blender's Python Console, Text Editor, or command line. If Blender MCP already works with your agent, you only need
 the Atlas add-on and this skill.
 
-Install [Atlas 0.1.3](https://cdn.atlas-beta.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.3.zip)
+Install [Atlas 0.1.4](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.4.zip)
 for the Blender Python workflows in this skill. See [setup](skills/atlas-blender/references/setup.md)
 for installation, checksums, and a read-only compatibility check.
 

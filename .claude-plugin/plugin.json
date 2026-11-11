@@ -1,6 +1,6 @@
 {
   "name": "worldlabs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Use World Labs APIs and Atlas for Blender",
   "author": {
     "name": "World Labs",
@@ -20,7 +20,7 @@
     "images",
     "gaussian-splat"
   ],
-  "documentationUrl": "https://atlas-beta.worldlabs.ai/docs",
+  "documentationUrl": "https://docs.atlas.worldlabs.ai",
   "privacyPolicyUrl": "https://www.worldlabs.ai/privacy-policy",
   "termsOfServiceUrl": "https://www.worldlabs.ai/terms-of-service"
 }
