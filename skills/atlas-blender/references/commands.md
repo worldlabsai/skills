@@ -34,6 +34,19 @@ print(atlas("pose", files=["/absolute/path/front.png", "/absolute/path/side.png"
 
 Use `mode="separate"` for independent images. Posing requests depth; imported depth creates point clouds parented to the cameras.
 
+## Cameras
+
+```python
+made = atlas("camera.create", name="Target 01")              # also takes matrixWorld, or fromView=True
+atlas("camera.set", name=made["cameraName"], matrixWorld=[[...], [...], [...], [0, 0, 0, 1]])
+```
+
+Both return `cameraName` and `matrixWorld`. `matrixWorld` is a Blender world matrix (Z-up). Pass
+`coordinateSystem="api"` to `camera.set` to give an API camera-to-world matrix (Y-up) instead.
+`camera.set` also takes `frameId` to move a frame's camera. A created camera has a 50 mm lens;
+copy the lens of a posed camera to match its field of view. Ordinary Blender camera tools work
+as well.
+
 ## Atlas and Chisel generation
 
 Use actual target camera names from the scene:
@@ -56,13 +69,14 @@ scene. Increase coverage with scene size; additional nearly identical views do n
 regions. Use visible, depth-ready images at the same resolution. The endpoint accepts two images,
 but that is a technical lower limit, not the usual context target.
 
-Splats are refined by default and usually take 10 to 20 minutes.
+Splats are refined by default and are a final output: a run takes 15 to 25 minutes and costs
+5,000 credits ($5). Check the context views first rather than running a draft to preview.
 The result imports as a native Gaussian splat object saved in the `.blend`. `jobs.import` returns
 `objectNames` for splats; image jobs return `frameIds`.
 
 ## Jobs
 
-Submission returns job IDs. Let Blender's event loop run between calls; do not block it with a polling loop or sleep. Background scripts must call the loaded Atlas package's `tick()` to advance jobs because the UI timer does not run there.
+Submission returns `{"jobs": [...]}`; read each job's `id` and `state` from it. Let Blender's event loop run between calls; do not block it with a polling loop or sleep. Background scripts must call the loaded Atlas package's `tick()` to advance jobs because the UI timer does not run there; see [background](background.md).
 
 ```python
 print(atlas("jobs.status"))

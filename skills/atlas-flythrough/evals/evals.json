@@ -1,0 +1,35 @@
+{
+  "skill_name": "atlas-flythrough",
+  "evals": [
+    {
+      "id": "orbit-around-subject",
+      "prompt": "Make an 8-second video that goes into the room in evals/files/bookshop.jpg and circles the display table once.",
+      "expected_output": "An MP4 that opens on the photo, moves in, and goes around the display table, with the table and its books keeping their shape.",
+      "files": [
+        "evals/files/bookshop.jpg"
+      ],
+      "assertions": [
+        "The image was posed with images2PosedRGBD before any generation",
+        "A sparse set of views around the display table was generated in one request with depth and shown to the user before the video request",
+        "The whole camera path was sent as one atlasGenerate request, with the sparse views in contextFrames",
+        "The first frame of the video matches the source photo",
+        "No frame looks into a wall, a door frame, or the inside of an object",
+        "The cost of the video request was stated before it was submitted"
+      ]
+    },
+    {
+      "id": "short-push-one-shot",
+      "prompt": "From evals/files/bookshop.jpg, make a 4-second push toward the display table with a slight turn to the right. Don't check in with me, just deliver the video.",
+      "expected_output": "An MP4 of a short push with a right turn, delivered without a check-in.",
+      "files": [
+        "evals/files/bookshop.jpg"
+      ],
+      "assertions": [
+        "The user was not asked to confirm anything before the video was delivered",
+        "The camera turns right, not left",
+        "The whole camera path was sent as one atlasGenerate request",
+        "The report names what the model invented, if anything"
+      ]
+    }
+  ]
+}

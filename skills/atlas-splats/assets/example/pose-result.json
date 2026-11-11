@@ -1,0 +1,49 @@
+{
+  "frames": [
+    {
+      "camera": {
+        "extrinsics": {
+          "position": [
+            0,
+            0.9668,
+            0
+          ],
+          "quaternion": [
+            -0.05953,
+            0.00027,
+            0.00452,
+            0.99822
+          ],
+          "coordinateSystem": "rub"
+        },
+        "intrinsics": {
+          "width": 1280,
+          "height": 720,
+          "fx": 762.31,
+          "fy": 762.31,
+          "cx": 640,
+          "cy": 360
+        }
+      },
+      "centroidWorld": [
+        -0.0373,
+        0,
+        -2.9567
+      ],
+      "imageAsset": {
+        "assetId": "<source image asset id>",
+        "path": "frames_0_image.jpg"
+      },
+      "depth": {
+        "depthAsset": {
+          "assetId": "<source depth asset id>",
+          "path": "frames_0_depth.exr"
+        },
+        "confidenceAsset": {
+          "assetId": "<source confidence asset id>",
+          "path": "frames_0_depth_confidence.png"
+        }
+      }
+    }
+  ]
+}

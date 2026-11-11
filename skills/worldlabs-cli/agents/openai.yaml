@@ -1,5 +1,5 @@
 interface:
   icon_small: "../../assets/worldlabs-logo.png"
   icon_large: "../../assets/worldlabs-logo.png"
-  display_name: "World Labs"
-  short_description: "Use the World Labs API through its tools or CLI"
+  display_name: "World Labs CLI"
+  short_description: "Run any Atlas API task from a terminal"

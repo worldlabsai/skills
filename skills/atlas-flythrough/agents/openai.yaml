@@ -1,0 +1,8 @@
+interface:
+  icon_small: "../../assets/worldlabs-logo.png"
+  icon_large: "../../assets/worldlabs-logo.png"
+  display_name: "Atlas flythrough"
+  short_description: "Make a camera-move video from images"
+  default_prompt: "Use $atlas-flythrough to make a video that moves through the scene in this photo."
+policy:
+  allow_implicit_invocation: true

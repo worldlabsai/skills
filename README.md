@@ -2,12 +2,19 @@
 
 Create with Atlas APIs and tools.
 
-Agent skills for the World Labs API and Atlas for Blender, packaged as one plugin for Codex and Claude Code.
+Agent skills for World Labs Atlas, packaged as one plugin for Codex and Claude Code.
 
 | Skill | What it does |
 | --- | --- |
-| `worldlabs` | Generate and edit images, estimate cameras and depth, and manage API tasks and assets. |
-| `atlas-blender` | Import calibrated projects, pose images, inspect point clouds, generate views, and create native Gaussian splats in Blender. |
+| `atlas-flythrough` | Make a camera-move video through a scene from one or more images. |
+| `atlas-splats` | Turn one or more images into a 3D scene as Gaussian splats. |
+| `atlas-blender` | Import calibrated projects, pose images, place cameras, generate views, and create native Gaussian splats in Blender. |
+| `worldlabs-cli` | Set up the World Labs CLI and run any other Atlas API task with it. |
+
+`atlas-flythrough` and `atlas-splats` start the same way: pose the images, generate a few views
+around the main part of the scene, and show them to the user before the long step. Each skill is
+complete without the others, so they carry identical copies of that shared material; see
+[Development](#development).
 
 ## Install
 
@@ -15,9 +22,10 @@ Agent skills for the World Labs API and Atlas for Blender, packaged as one plugi
 
 Install World Labs from the ChatGPT plugin directory and connect your World Labs account. The hosted
 connection runs the Atlas tasks: generating images and views, estimating cameras and depth,
-reconstructing Gaussian splats, and extracting meshes. The plugin carries both repository skills
-and all their supporting files. The Atlas for Blender skill requires a compatible local Blender
-environment; it cannot control Blender from a hosted chat without that access. The plugin does not
+reconstructing Gaussian splats, and extracting meshes. The plugin carries every skill in this
+repository and its supporting files. The video, splats and CLI skills are written for a shell
+with the World Labs CLI, and the Atlas for Blender skill requires a compatible local Blender
+environment; a hosted chat without that access uses the connected tools. The plugin does not
 install Blender, its extension, or the World Labs CLI.
 
 ### Codex
@@ -27,7 +35,7 @@ codex plugin marketplace add worldlabsai/skills
 codex plugin add worldlabs@worldlabs
 ```
 
-Start a new chat and invoke a skill, such as `$worldlabs:worldlabs` or `$worldlabs:atlas-blender`.
+Start a new chat and invoke a skill, such as `$worldlabs:atlas-flythrough` or `$worldlabs:atlas-blender`.
 
 ### Claude Code
 
@@ -36,10 +44,17 @@ claude plugin marketplace add worldlabsai/skills
 claude plugin install worldlabs@worldlabs
 ```
 
-Start a new session and invoke `/worldlabs:worldlabs` or `/worldlabs:atlas-blender`.
+Start a new session and invoke `/worldlabs:atlas-flythrough`, `/worldlabs:atlas-splats`,
+`/worldlabs:atlas-blender` or `/worldlabs:worldlabs-cli`.
 
 The plugin also adds the hosted World Labs MCP server. Run `/mcp`, select `worldlabs`, and sign in
 with your World Labs account to run the same tasks as the CLI without an API key.
+
+### Other agents
+
+With the World Labs CLI installed, `worldlabs skills install` installs every skill in this
+repository for the agents it detects, through [Skills CLI](https://skills.sh). Pass
+`--client <agent>` to choose one.
 
 ### Claude
 
@@ -60,7 +75,7 @@ worldlabs tasks list --json
 ```
 
 Enter your API key in the CLI's private prompt. Make sure `worldlabs` is available in the agent's
-shell.
+shell. The video skill also needs `ffmpeg`.
 
 ### Atlas for Blender
 
@@ -86,6 +101,8 @@ for installation, checksums, and a read-only compatibility check.
 
 ## Try it
 
+- “Make a video that moves into the room in this photo and circles the table.”
+- “Turn this photo into a 3D scene I can look around in.”
 - “List the tasks available through the World Labs API.”
 - “Find my open Atlas Blender session and inspect its frames without changing anything.”
 - “Import this calibrated Atlas project and inspect its cameras and point clouds.”
@@ -106,7 +123,21 @@ For Claude Code, run `claude --plugin-dir "$PWD"` and restart the session after 
 Validate the plugin metadata with `claude plugin validate --strict .`.
 
 Use the [test scenarios](tests/scenarios.md) to check skill selection and tool behavior.
-Both hosts share the same `skills/` content.
+Both hosts share the same `skills/` content. Each workflow skill also has test cases in its
+`evals/evals.json`, in the [Agent Skills](https://agentskills.io/skill-creation/evaluating-skills)
+format.
+
+The Agent Skills format has no way to share files between skills, and a skill can be installed
+alone. `atlas-flythrough` and `atlas-splats` therefore each hold a copy of
+`references/scene.md`, `references/conventions.md` and the first files of `assets/example/`.
+Edit one copy, then copy it over the other. This prints nothing when they match:
+
+```sh
+for f in references/scene.md references/conventions.md assets/example/pose-request.json \
+  assets/example/pose-result.json assets/example/views-request.json assets/example/views.jpg; do
+  cmp "skills/atlas-flythrough/$f" "skills/atlas-splats/$f"
+done
+```
 
 ## License
 

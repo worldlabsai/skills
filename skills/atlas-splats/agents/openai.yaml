@@ -1,0 +1,8 @@
+interface:
+  icon_small: "../../assets/worldlabs-logo.png"
+  icon_large: "../../assets/worldlabs-logo.png"
+  display_name: "Atlas splats"
+  short_description: "Turn images into a 3D scene as splats"
+  default_prompt: "Use $atlas-splats to turn this photo into a 3D scene."
+policy:
+  allow_implicit_invocation: true
