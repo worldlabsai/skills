@@ -2,7 +2,7 @@
   "mcpServers": {
     "worldlabs": {
       "type": "http",
-      "url": "https://api.atlas.worldlabs.ai/mcp"
+      "url": "https://api.atlas-beta.worldlabs.ai/mcp"
     }
   }
 }
