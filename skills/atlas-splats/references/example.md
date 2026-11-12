@@ -65,9 +65,9 @@ the left of the door is the least settled part of the scene. The work carried st
 
 The ten frames were checked as input: the floor, the table from every side, all four walls from
 inside the room, and the hall through the doorway appear in at least one view; the table, wheel
-and kiln agree across views; and every frame is 1280x720 with depth. Ten is near the low end for
-a room. It was enough here because the room is small and the views surround its one large
-object.
+and kiln agree across views; and every frame is 1280x720 with depth. Ten is fewer than a room
+usually needs. It was enough here because the room is small and bare, and the views surround its
+one large object.
 
 [`splats-request.json`](../assets/example/splats-request.json) is the request: the posed frame
 and the nine views that were kept, each with its image, depth and camera. It was submitted once,
