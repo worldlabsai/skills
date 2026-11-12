@@ -58,10 +58,11 @@ When placing separately posed images in one scene, read
 [scene placement](references/scene-placement.md). Camera visibility decides which frames the
 add-on uses as context; **Points** toggles the point clouds on their own.
 
-## Leave a normal Blender project
+## Work the way Blender is used
 
-The user should be able to open the file and use it like any Blender project. Work with
-Blender's own features.
+From the first camera you place, the scene should look and behave like any Blender project. The
+user may be watching, and may take over at any point, so this is how to work throughout and not
+a clean-up at the end. Use Blender's own features.
 
 - **A camera move is an animated camera with a few keyframes**, one at each place the shot
   changes, and Blender's own interpolation between them. The user can then retime or reshape it
@@ -76,14 +77,15 @@ Blender's own features.
   through the lens.
 - **Play works on first open.** The timeline has the shot's length and frame rate and sits on
   the first frame.
-- **The window is laid out for watching:** the view through the camera beside an overview in
-  which the camera is visible, with overlays on.
+- **The window is laid out for watching** as soon as there is a camera path: the view through
+  the animated camera beside an overview in which the camera is visible, with overlays on. The
+  user sees what the shot will show and where the camera is.
 - **Colours show.** Points and splats draw grey in Solid shading, so the viewports are in
   Material Preview or Rendered.
 - **Blender and Atlas agree.** What plays in Blender is the path that was rendered. The viewport
   shows the estimated point cloud; the video holds the finished frames.
 
-Before handing over, save, reopen the saved file and play it through, looking near the start
-and the end. Give the user the file's path with the result.
+Before handing over, save, reopen the saved file and play it through, looking through the
+camera near the start and the end. Give the user the file's path with the result.
 
 For Atlas concepts, see the [Atlas documentation](https://docs.atlas.worldlabs.ai/how-to-use-atlas).
