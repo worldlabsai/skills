@@ -1,6 +1,6 @@
 ---
 name: atlas-splats
-description: Turn one or more photos or a generated image into a 3D scene as Gaussian splats (an SPZ file) with World Labs Atlas. Use when the user wants a 3D scene, a world to explore, splats, or a scene to view, export or mesh from images.
+description: Turn one or more photos or a generated image into a 3D scene as Gaussian splats (an SPZ file) with World Labs Atlas. Use when the user wants a 3D scene, a world to explore, splats, or a scene to view, export or mesh from images, or new angles and views of a place from an image.
 license: Apache-2.0
 compatibility: Needs the worldlabs CLI, signed in. Blender is preferred when installed.
 ---
@@ -25,8 +25,8 @@ right. The views are also the preview of the result.
    If they choose the open window, open it as soon as the first image is posed, before any
    views or path, so they watch from the start. Without Blender, work in the shell.
    [references/scene.md](references/scene.md) has the question for each setup and the steps:
-   pose the images, build the scene out in rounds of a few views until it has been seen from
-   all around, and show it.
+   pose the images, build the scene out in rounds of a few views until it is blocked out with no
+   gaps, and show it.
 
 2. **Check the set as reconstruction input.** The posed frames and the views you kept are the
    input. A good set:
@@ -38,7 +38,7 @@ right. The views are also the preview of the result.
    - has depth over most of every frame, and one size for all frames. A view can look right and
      still have depth on only a small part of it.
 
-   For a single room, 8 to 16 views in all is a good range. To add coverage, send another
+   For a single room, 12 to 16 views in all is a good range. To add coverage, send another
    `atlasGenerate` request with the current views as `contextFrames` and `"returnDepth": true`.
 
 3. **Reconstruct once.** Submit it as soon as the set is good, and tell the person it is

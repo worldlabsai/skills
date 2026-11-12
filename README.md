@@ -24,7 +24,9 @@ failed to carry and fix that, instead of appending a rule.
 - **Blender is the preferred place** when it is installed, because both of them can see the
   scene in 3D. The Atlas add-on is optional.
 - **Build the scene first, then make things from it.** The scene is explored outward in rounds
-  of a few views, each placed from what the last revealed, before any video or reconstruction.
+  of a few views, each placed from what the last revealed, until it is blocked out with no gaps
+  (a room takes 12 to 16 views), before any video or reconstruction. Building the scene is a
+  job on its own too: a request for new angles of an image is done the same way.
   The path or the splats come from the scene,
   and each result is looked at before it is handed over.
 - **Say what good looks like.** The skills describe a good path or a good set of views and leave

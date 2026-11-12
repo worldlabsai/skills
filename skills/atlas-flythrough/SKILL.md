@@ -1,6 +1,6 @@
 ---
 name: atlas-flythrough
-description: Make a camera-move video through a scene (flythrough, walkthrough, orbit, push-in, pan) from one or more photos or a generated image with World Labs Atlas. Use when the user wants a video or a camera move from images.
+description: Make a camera-move video through a scene (flythrough, walkthrough, orbit, push-in, pan) from one or more photos or a generated image with World Labs Atlas. Use when the user wants a video or a camera move from images, or new angles of a scene that may become one.
 license: Apache-2.0
 compatibility: Needs the worldlabs CLI, signed in, and ffmpeg. Blender is preferred when installed.
 ---
@@ -37,6 +37,7 @@ what that image showed to work with.
    this step there is a scene, not one image: views from all around it, including from the far
    side looking back toward where the first camera stood, which you and the person have both
    looked at. Views that stay beside the first camera and face the way it faced are not that.
+   The scene is blocked out in full, a dozen or more views with no gaps, before any path.
 
 2. **Choose the path through the scene you built.** Look at what the views uncovered and pick a
    route that uses it. How you build the cameras is up to you. A good path:
