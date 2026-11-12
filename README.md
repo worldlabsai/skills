@@ -22,8 +22,8 @@ failed to carry and fix that, instead of appending a rule.
   outright not to ask. Even then it chooses what the person would most likely choose.
 - **Blender is the preferred place** when it is installed, because both of them can see the
   scene in 3D. The Atlas add-on is optional.
-- **Build the scene first, then make things from it.** Views that uncover the space come before
-  any video or reconstruction, for every workflow. The path or the splats come from the scene,
+- **Build the scene first, then make things from it.** The scene is explored outward in rounds
+  of a few views, each placed from what the last revealed, before any video or reconstruction. The path or the splats come from the scene,
   and each result is looked at before it is handed over.
 - **Say what good looks like.** The skills describe a good path or a good set of views and leave
   the camera placement to the agent. Code appears only for calls to our own tools.

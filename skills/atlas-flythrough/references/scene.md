@@ -1,7 +1,7 @@
 # Build the scene
 
-A video and splats start the same way: agree how to work, pose the images, generate views that
-uncover the scene, and look at them with the person before the long step. This file is identical in
+A video and splats start the same way: agree how to work, pose the images, build the scene out
+a few views at a time, and look at it with the person before the long step. This file is identical in
 `atlas-flythrough` and `atlas-splats`. If posed views of the scene already exist from earlier in
 the session, reuse them and go to the long step.
 
@@ -78,31 +78,39 @@ Find how far away things are, where the floor is, and where there is room to sta
 are in the depth's units, which is what tells you how big a move is. Settle with the person what
 the main part of the scene is.
 
-## 3. Generate views
+## 3. Build the scene out
 
-Generate about 6 to 12 views that uncover the scene: the main part of it from all around, and
-the space beside and beyond what the image showed. One image is a single view of a place. After
-this step there should be a scene, with enough of the space known that there are real choices
-about where a camera can go or where a person can look.
+One image is a single view of a place. Uncover the rest of it a few views at a time, the way a
+person would explore a room: step somewhere new, look around, and let what you find decide where
+to go next. At this stage the question is what is in this place, not where a camera path or a
+viewer will go. That comes after, and it will be better for having a real scene to choose from.
 
-These views are what make the long step possible. From one image alone, the model only follows a
-camera that turns about half the field of view or moves about a third of the typical depth; past
-that it invents what it shows. What the image did not show gets decided here, in a request that
-takes under a minute, and you both see it before anything is built on it.
+Work in rounds:
+
+1. **Place a few cameras** that step away from the frames you have and look somewhere they did
+   not: to each side, further in, back toward where the first camera stood.
+2. **Generate them** as one `atlasGenerate` request, with the frames so far as `contextFrames`
+   and `"returnDepth": true`, so each new view joins the scene with its own depth.
+3. **Look at what came back.** Each view shows new surfaces and new open space. Drop a view that
+   disagrees with the others.
+4. **Place the next few** using what the new views revealed, in space that is now known to be
+   open, toward what is still unseen.
+
+Two or three rounds, 6 to 12 views in all, is usually enough for a room. Stop when the main part
+of the scene has been seen from all around and there are real choices about where a camera can
+go. A set of views that all look where the source image looked has uncovered nothing.
+
+From one image alone, the model only follows a camera that turns about half the field of view
+or moves about a third of the typical depth; past that it invents what it shows. That is why
+the scene grows outward in rounds: each round gives the next one more to stand on.
 
 Where the cameras go is your decision. Good views:
 
-- stand in space the posed frames show as empty. A camera inside an object, behind a wall, or
+- stand in space the frames so far show as empty. A camera inside an object, behind a wall, or
   outside what the frames saw gets large invented objects in front of the lens;
-- each have their own position. Views that only turn in place add little for later steps, and a
-  request whose cameras all share one position cannot return depth;
-- overlap their neighbours;
-- look at what matters, from about the height a person would see it.
-
-Send them as one `atlasGenerate` request: the posed frames as `contextFrames`, your cameras as
-`targetCameras`, and `"returnDepth": true` so each view can be used in the long step. Views
-generated together agree with each other. When a scene is hard to see in advance, work a view or
-two at a time instead: generate, look, add the result to `contextFrames`, and place the next.
+- each have their own position. Views that only turn in place add little for the next round,
+  and a request whose cameras all share one position cannot return depth;
+- overlap what is already known, so the new view agrees with it.
 
 ```sh
 worldlabs tasks run atlasGenerate --request views.json --wait --timeout 900 --json > views_op.json
@@ -110,13 +118,13 @@ worldlabs operations download <views-operation-id> --out views
 ```
 
 The request is short; see [the example's](../assets/example/views-request.json). At current rates
-it costs 50 credits plus 10 for each view after the first, so 8 views are about 120 credits
-($0.12). With at most 11 context frames and 32 targets, depth is reconstructed in the same step;
-the [task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
+a request costs 50 credits plus 10 for each view after the first, so a round of four views is
+about 80 credits ($0.08), and it takes under a minute. With at most 11 context frames and 32
+targets, depth is reconstructed in the same step; the
+[task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
 
-Look at every view. Objects should keep their position, shape and appearance from view to view,
-and nothing large should block a lens. Drop a view that disagrees with the rest. To replace it or
-to fill a gap, send another request with the good views added to `contextFrames`.
+In Blender each round's views appear in the scene as cameras with point clouds, so the person
+watches the place fill in.
 
 ## 4. Show the person
 

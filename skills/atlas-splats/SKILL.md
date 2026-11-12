@@ -25,7 +25,7 @@ right. The views are also the preview of the result.
    If they choose the open window, open it as soon as the first image is posed, before any
    views or path, so they watch from the start. Without Blender, work in the shell.
    [references/scene.md](references/scene.md) has the question for each setup and the steps:
-   pose the images, generate views that uncover the scene, and show them.
+   pose the images, build the scene out in rounds of a few views, and show it.
 
 2. **Check the set as reconstruction input.** The posed frames and the views you kept are the
    input. A good set:

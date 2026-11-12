@@ -14,9 +14,12 @@ A good one goes somewhere. The camera travels a real distance through the scene,
 the first frame did not, and ends on a different view from where it began.
 
 The work is in two parts, in this order: build out the scene, then find a path through it. One
-posed image is a single view of a place. Generating views around it uncovers the rest of the
-space, and that is what gives the camera somewhere to go. A path planned from the one image has
-only what that image showed to work with.
+posed image is a single view of a place. Exploring outward from it, a few views at a time,
+uncovers the rest of the space, and that is what gives the camera somewhere to go.
+
+The shot is chosen in step 2, from the scene. Until then there is no route: do not describe a
+camera move to the person or place views along one. A path planned from the one image has only
+what that image showed to work with.
 
 ## Steps
 
@@ -29,9 +32,9 @@ only what that image showed to work with.
    If they choose the open window, open it as soon as the first image is posed, before any
    views or path, so they watch from the start. Without Blender, work in the shell.
    [references/scene.md](references/scene.md) has the question for each setup and the steps:
-   pose the images, generate views that uncover the space, and show them. At the end of this
-   step there is a scene, not one image: several posed views that you and the person have both
-   looked at.
+   pose the images, build the scene out in rounds of a few views, and show it. At the end of
+   this step there is a scene, not one image: views looking in different directions from
+   different places, which you and the person have both looked at.
 
 2. **Choose the path through the scene you built.** Look at what the views uncovered and pick a
    route that uses it. How you build the cameras is up to you. A good path:
