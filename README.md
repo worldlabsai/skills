@@ -152,7 +152,8 @@ Edit one copy, then copy it over the other. This prints nothing when they match:
 
 ```sh
 for f in references/scene.md references/conventions.md assets/example/pose-request.json \
-  assets/example/pose-result.json assets/example/views-request.json assets/example/views.jpg; do
+  assets/example/pose-result.json assets/example/round-1-request.json \
+  assets/example/round-2-request.json assets/example/round-3-request.json assets/example/views.jpg; do
   cmp "skills/atlas-flythrough/$f" "skills/atlas-splats/$f"
 done
 ```

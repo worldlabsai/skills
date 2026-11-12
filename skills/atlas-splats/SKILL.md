@@ -69,8 +69,8 @@ right. The views are also the preview of the result.
 
 ## Example
 
-[A complete run](references/example.md): one photo of a potter's studio, seven views around the
-work table, and one reconstruction from the eight frames, with pictures of the result. Its
+[A complete run](references/example.md): one photo of a potter's studio, the room built out in
+three rounds of views, and one reconstruction from the ten frames, with pictures of the result. Its
 requests and results are in `assets/example/`. It shows one scene's choices, not values to copy.
 
 ## Facts
