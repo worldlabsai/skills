@@ -16,14 +16,16 @@ Agent skills for World Labs Atlas, packaged as one plugin for Codex and Claude C
 Edit the skills from these ideas. When a session shows a problem, find which idea the text
 failed to carry and fix that, instead of appending a rule.
 
-- **The person directs; the agent does the work.** Where the work happens, what the result
-  should be, and when to spend on the long step are the person's decisions. Asking is the
-  default: the agent asks each in one line, and decides for itself only when the person says
-  outright not to ask. Even then it chooses what the person would most likely choose.
+- **The person directs; the agent does the work.** Where the work happens and what the result
+  should be are the person's decisions. Asking is the default for those: the agent asks each in
+  one line, and decides for itself only when the person says outright not to ask. Once they are
+  settled the agent carries the work through to the result. It shows each stage as it lands and
+  does not quote prices or ask for a go-ahead before a step.
 - **Blender is the preferred place** when it is installed, because both of them can see the
   scene in 3D. The Atlas add-on is optional.
 - **Build the scene first, then make things from it.** The scene is explored outward in rounds
-  of a few views, each placed from what the last revealed, before any video or reconstruction. The path or the splats come from the scene,
+  of a few views, each placed from what the last revealed, before any video or reconstruction.
+  The path or the splats come from the scene,
   and each result is looked at before it is handed over.
 - **Say what good looks like.** The skills describe a good path or a good set of views and leave
   the camera placement to the agent. Code appears only for calls to our own tools.

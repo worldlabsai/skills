@@ -10,11 +10,11 @@
       ],
       "assertions": [
         "The image was posed with images2PosedRGBD before any generation",
-        "A sparse set of views around the display table was generated in one request with depth and shown to the user before the video request",
-        "The whole camera path was sent as one atlasGenerate request, with the sparse views in contextFrames",
+        "The room was built out in rounds of views with depth before the video request",
+        "The whole camera path was sent as one atlasGenerate request, with the kept views in contextFrames",
         "The first frame of the video matches the source photo",
         "No frame looks into a wall, a door frame, or the inside of an object",
-        "The cost of the video request was stated before it was submitted"
+        "No price was quoted and no go-ahead was requested before the video request"
       ]
     },
     {
@@ -27,8 +27,9 @@
       "assertions": [
         "The camera travels a real distance through the room and does not hover near the source view",
         "The last frame shows something the first frame did not",
-        "Views covering the route were generated and shown before the video request",
-        "The whole camera path was sent as one atlasGenerate request"
+        "Views from opposite sides of the room, including one looking back toward the source camera, were generated before any path was chosen",
+        "The whole camera path was sent as one atlasGenerate request",
+        "No price was quoted and no go-ahead was requested before the video request"
       ]
     },
     {

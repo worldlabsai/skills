@@ -10,16 +10,20 @@ Camera and depth conventions are in [conventions.md](conventions.md). A complete
 
 ## Agree how to work
 
-The person directs and you do the work. Three decisions are theirs:
+The person directs and you do the work. Two decisions are theirs:
 
 - **Where the work happens.** Blender is the preferred place when it is installed. Both of you
   see the scene in 3D, they can shape the result, and they keep a project file at the end.
 - **What the result should be.** The subject, how far the camera goes, what they want to be able
   to look at.
-- **When to spend on the long step.** They see the views, the cost and the wait first.
 
-Asking is the default. Ask each in one short line when it comes up, and then carry on. A plain
+Asking is the default for those two. Ask each in one short line when it comes up. A plain
 request, such as "make me a flythrough", is not a request to skip the questions.
+
+Once they are settled, carry the work through to the finished result without stopping. Show
+each stage as it lands (the posed image, each round of views, the path) so the person can steer
+whenever they want to. They have asked for the result, so the steps that produce it need no
+go-ahead and no price quoted.
 
 Decide for the person only when they say outright that they do not want to be asked, for example
 "don't check in, just deliver it". Then choose what they would most likely choose, and say what
@@ -83,7 +87,7 @@ the main part of the scene is.
 One image is a single view of a place. This step decides what the rest of the place is: the far
 side of the table, the wall behind the camera, what is round the corner. The model invents
 whatever a camera sees that no frame has shown, and here that is the point. A round takes under
-a minute and costs cents, and you and the person see the result before anything is built on it.
+a minute, and you and the person see the result before anything is built on it.
 
 Explore the way a person would walk into a room they had only seen in a photo: go in, cross to
 the other side, turn round and look back. At this stage the question is what is in this place,
@@ -127,9 +131,7 @@ worldlabs operations download <views-operation-id> --out views
 ```
 
 The request is short; see [the example's second round](../assets/example/round-2-request.json).
-At current rates a request costs 50 credits plus 10 for each view after the first, so a round of
-four views is about 80 credits ($0.08), and it takes under a minute. With at most 11 context frames and 32
-targets, depth is reconstructed in the same step; the
+With at most 11 context frames and 32 targets, depth is reconstructed in the same step; the
 [task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
 
 In Blender each round's views appear in the scene as cameras with point clouds, so the person
@@ -141,6 +143,6 @@ Show the views beside the source image. In Blender they are in the scene as came
 its image, depth and point cloud; tell the person they are there to look through and move
 around. In a shell, one contact sheet does it.
 
-Say in a line or two what came from the source and what the model invented, and what the long
-step will cost and how long it takes. Then ask whether this is the scene they want, and wait
-for the answer. They are being invited to steer, and this is the cheap moment to do it.
+Say in a line or two what came from the source and what the model invented, then carry on to
+the long step. If they want something different they will say so, and changing the scene now is
+quick.

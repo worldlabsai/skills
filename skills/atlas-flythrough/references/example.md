@@ -6,7 +6,7 @@ of pots along the walls, a kiln in a corner, windows on the left. No route was n
 was chosen until the scene had been built.
 
 These are the choices made for this scene. Another scene, or another reading of the request,
-calls for different ones. The run used the CLI alone, with contact sheets at the check-ins.
+calls for different ones. The run used the CLI alone, with a contact sheet to show each stage.
 
 ## What posing returned
 
@@ -51,17 +51,16 @@ source camera, for a second look at the door frame, which only the source image 
 four frames so far as context, three cameras, and `"returnDepth": true`.
 [`round-1-request.json`](../assets/example/round-1-request.json) and
 [`round-3-request.json`](../assets/example/round-3-request.json) are the others. The rounds took
-18, 30 and 26 seconds and cost 70, 70 and 80 credits.
+18, 30 and 26 seconds.
 
 [`views.jpg`](../assets/example/views.jpg) shows the source image and all ten views by round.
 The table, wheel, bowls, kiln and shelves keep their shape and place throughout.
 
 ## What the person saw
 
-The contact sheet, with three notes: everything through the doorway is invented; the floor
-changes from dusty concrete to smooth grey at the door; and the corner to the left of the door is
-the least settled part of the scene. Then the cost and time of the video, about 1,570 credits
-and two minutes. They agreed to continue.
+The contact sheet after each round, and at the end three notes: everything through the doorway
+is invented; the floor changes from dusty concrete to smooth grey at the door; and the corner to
+the left of the door is the least settled part of the scene. The work carried straight on.
 
 ## The path
 
@@ -88,7 +87,7 @@ frame and the nine views that were kept, each with its depth.
 
 ## The result
 
-One request, 114 seconds, 192 JPEG frames at 1280x720, 1,568 credits.
+One request, 114 seconds, 192 JPEG frames at 1280x720.
 [`frames.jpg`](../assets/example/frames.jpg) shows twelve of them in order.
 
 - The first frame matches the photo.

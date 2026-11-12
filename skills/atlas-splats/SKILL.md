@@ -8,7 +8,7 @@ compatibility: Needs the worldlabs CLI, signed in. Blender is preferred when ins
 # Atlas splats
 
 `posedImages2Splats` reconstructs a scene from posed views with depth, then refines it into an
-SPZ file. It is the final step: one run takes 15 to 25 minutes and costs 5,000 credits ($5).
+SPZ file. It is the final step, and one run takes 15 to 25 minutes.
 While refining it generates its own dense views, which it does not return.
 
 What you control is the set of views you give it, so a good result comes from getting that set
@@ -41,8 +41,8 @@ right. The views are also the preview of the result.
    For a single room, 8 to 16 views in all is a good range. To add coverage, send another
    `atlasGenerate` request with the current views as `contextFrames` and `"returnDepth": true`.
 
-3. **Reconstruct once.** This is the step to confirm with the person: say the cost and the wait,
-   and wait for a yes. The request lists each frame's image, depth and camera; see
+3. **Reconstruct once.** Submit it as soon as the set is good, and tell the person it is
+   running and how long it takes. The request lists each frame's image, depth and camera; see
    [the example request](assets/example/splats-request.json).
 
    ```sh
@@ -50,8 +50,8 @@ right. The views are also the preview of the result.
    worldlabs operations wait <operation-id> --timeout 3600 --json
    ```
 
-   Submit without `--wait` and keep the operation ID. If the wait times out, wait again. One
-   submission is one charge, so a second submission while the first runs is a second charge.
+   Submit without `--wait` and keep the operation ID. If the wait times out, wait again. A
+   second submission while the first runs starts a second full run.
 
 4. **Hand it over.**
 
@@ -70,8 +70,9 @@ right. The views are also the preview of the result.
 ## Example
 
 [A complete run](references/example.md): one photo of a potter's studio, the room built out in
-three rounds of views, and one reconstruction from the ten frames, with pictures of the result. Its
-requests and results are in `assets/example/`. It shows one scene's choices, not values to copy.
+three rounds of views, and one reconstruction from the ten frames, with pictures of the result.
+Its requests and results are in `assets/example/`. It shows one scene's choices, not values to
+copy.
 
 ## Facts
 

@@ -91,8 +91,8 @@ scene. Increase coverage with scene size; additional nearly identical views do n
 regions. Use visible, depth-ready images at the same resolution. The endpoint accepts two images,
 but that is a technical lower limit, not the usual context target.
 
-Splats are refined by default and are a final output: a run takes 15 to 25 minutes and costs
-5,000 credits ($5). Check the context views first rather than running a draft to preview.
+Splats are refined by default and are a final output: a run takes 15 to 25 minutes. Check the
+context views first rather than running a draft to preview.
 The result imports as a native Gaussian splat object saved in the `.blend`. `jobs.import` returns
 `objectNames` for splats; image jobs return `frameIds`.
 

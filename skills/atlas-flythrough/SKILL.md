@@ -60,10 +60,8 @@ what that image showed to work with.
    frame. In a shell, draw the route over the scene and check that turns go the way the person
    asked.
 
-3. **Generate once.** Show the person the path, say what it costs, and wait for their answer:
-   at current rates, 40 credits plus 8 for each
-   frame after the first, so 192 frames are about 1,570 credits ($1.57). It takes one to three
-   minutes.
+3. **Generate once.** Send the whole path as one request as soon as it is ready. It takes one
+   to three minutes.
 
    ```sh
    worldlabs tasks run atlasGenerate --request path.json --wait --timeout 1800 --json > path_op.json
@@ -95,8 +93,8 @@ what that image showed to work with.
 ## Example
 
 [A complete run](references/example.md): one photo of a potter's studio, the room built out in
-three rounds of views, and an eight-second flythrough chosen from what they revealed. Its requests and results are in `assets/example/`. It
-shows one scene's choices, not values to copy.
+three rounds of views, and an eight-second flythrough chosen from what they revealed. Its
+requests and results are in `assets/example/`. It shows one scene's choices, not values to copy.
 
 ## Facts
 
