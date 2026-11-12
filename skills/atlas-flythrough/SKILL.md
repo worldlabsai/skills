@@ -22,6 +22,12 @@ The shot is chosen in step 2, from the scene. Until then there is no route: do n
 camera move to the person or place views along one. A path planned from the one image has only
 what that image showed to work with.
 
+This file and [references/scene.md](references/scene.md) are the method, and the request shapes
+are in `assets/example/`. Read both files in full before starting. The Atlas docs are reference
+for a task's fields and limits: open a task's page when a request needs a field these files do
+not show, or when one is rejected. The docs also have shorter workflow pages written for people;
+where they differ from these files, follow these files.
+
 ## Steps
 
 1. **Agree where to work, then build the scene.** Before anything else, check whether Blender
