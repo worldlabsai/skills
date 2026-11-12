@@ -11,19 +11,23 @@ A flythrough is a camera path rendered by `atlasGenerate`: one camera per frame,
 request, one image back per camera.
 
 A good one goes somewhere. The camera travels a real distance through the scene, shows things
-the first frame did not, and ends on a different view from where it began. The model follows a
-path where it has views of the scene to work from, so the work is in two parts: a few views of
-where the camera will go, then the path.
+the first frame did not, and ends on a different view from where it began.
+
+The work is in two parts, in this order: build out the scene, then find a path through it. One
+posed image is a single view of a place. Generating views around it uncovers the rest of the
+space, and that is what gives the camera somewhere to go. A path planned from the one image has
+only what that image showed to work with.
 
 ## Steps
 
 1. **Build the scene.** Follow [references/scene.md](references/scene.md). Its first part is a
    question to the person about where to work, with Blender as the preferred place. Ask it
-   before anything else. It then poses the images, generates views along the route, and shows
-   them. Decide roughly where the path goes before
-   placing the views, so they make that route possible.
+   before anything else. It then poses the images, generates views that uncover the space, and
+   shows them. At the end of this step there is a scene, not one image: several posed views
+   that you and the person have both looked at.
 
-2. **Choose the path.** How you build the cameras is up to you. A good path:
+2. **Choose the path through the scene you built.** Look at what the views uncovered and pick a
+   route that uses it. How you build the cameras is up to you. A good path:
 
    - leaves the starting view early and keeps moving, so most of the video is somewhere the
      first frame was not;
@@ -36,8 +40,7 @@ where the camera will go, then the path.
    - has one camera per frame (seconds x frame rate; 24 a second is a good default), evenly and
      closely spaced.
 
-   Make the move the person asked for. If they want a slow push on one subject, that is the
-   shot, and the posed image alone is enough context for it.
+   If the best route needs somewhere the views do not show yet, add views there first.
 
    In Blender the path is an animated camera, and the cameras you send are its pose at each
    frame. In a shell, draw the route over the scene and check that turns go the way the person

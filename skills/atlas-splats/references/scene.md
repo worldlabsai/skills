@@ -1,7 +1,7 @@
 # Build the scene
 
-A video and splats start the same way: agree how to work, pose the images, generate a few views,
-and look at them with the person before the long step. This file is identical in
+A video and splats start the same way: agree how to work, pose the images, generate views that
+uncover the scene, and look at them with the person before the long step. This file is identical in
 `atlas-flythrough` and `atlas-splats`. If posed views of the scene already exist from earlier in
 the session, reuse them and go to the long step.
 
@@ -80,15 +80,15 @@ the main part of the scene is.
 
 ## 3. Generate views
 
-Generate about 6 to 12 views that show the parts of the scene the result depends on. For splats,
-which the person can look at from anywhere, that is the main part of the scene from all around.
-For a video it is the route and what the camera looks at along it.
+Generate about 6 to 12 views that uncover the scene: the main part of it from all around, and
+the space beside and beyond what the image showed. One image is a single view of a place. After
+this step there should be a scene, with enough of the space known that there are real choices
+about where a camera can go or where a person can look.
 
-These views are what let the long step go far. From one image alone, the model only follows a
+These views are what make the long step possible. From one image alone, the model only follows a
 camera that turns about half the field of view or moves about a third of the typical depth; past
-that it invents what it shows. So place views out where the result needs to go. What the image
-did not show gets decided here, in a request that takes under a minute, and you both see it
-before anything is built on it.
+that it invents what it shows. What the image did not show gets decided here, in a request that
+takes under a minute, and you both see it before anything is built on it.
 
 Where the cameras go is your decision. Good views:
 
