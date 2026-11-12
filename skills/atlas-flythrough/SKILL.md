@@ -17,9 +17,10 @@ where the camera will go, then the path.
 
 ## Steps
 
-1. **Build the scene.** Follow [references/scene.md](references/scene.md). It starts by agreeing
-   with the person how to work, with Blender as the preferred place, then poses the images,
-   generates views along the route, and shows them. Decide roughly where the path goes before
+1. **Build the scene.** Follow [references/scene.md](references/scene.md). Its first part is a
+   question to the person about where to work, with Blender as the preferred place. Ask it
+   before anything else. It then poses the images, generates views along the route, and shows
+   them. Decide roughly where the path goes before
    placing the views, so they make that route possible.
 
 2. **Choose the path.** How you build the cameras is up to you. A good path:

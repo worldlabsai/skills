@@ -18,10 +18,15 @@ The person directs and you do the work. Three decisions are theirs:
   to look at.
 - **When to spend on the long step.** They see the views, the cost and the wait first.
 
-Ask each in one short line when it comes up, and then carry on. If the person asked for the
-result in one go, make these choices yourself and say what you chose.
+Asking is the default. Ask each in one short line when it comes up, and then carry on. A plain
+request, such as "make me a flythrough", is not a request to skip the questions.
 
-To settle where to work, check what is there, then ask the question that fits:
+Decide for the person only when they say outright that they do not want to be asked, for example
+"don't check in, just deliver it". Then choose what they would most likely choose, and say what
+you chose. For where to work, that is Blender in the background whenever it is installed.
+
+Where to work comes first, before posing or reading further. Check what is there, then ask the
+question that fits:
 
 | What you find | What to ask |
 | --- | --- |

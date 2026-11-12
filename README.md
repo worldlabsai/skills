@@ -17,8 +17,9 @@ Edit the skills from these ideas. When a session shows a problem, find which ide
 failed to carry and fix that, instead of appending a rule.
 
 - **The person directs; the agent does the work.** Where the work happens, what the result
-  should be, and when to spend on the long step are the person's decisions. The agent asks each
-  in one line, and decides for itself only when asked for the result in one go.
+  should be, and when to spend on the long step are the person's decisions. Asking is the
+  default: the agent asks each in one line, and decides for itself only when the person says
+  outright not to ask. Even then it chooses what the person would most likely choose.
 - **Blender is the preferred place** when it is installed, because both of them can see the
   scene in 3D. The Atlas add-on is optional.
 - **Look before building.** A few views come before the long step, and the result is looked at

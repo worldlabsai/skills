@@ -16,9 +16,10 @@ right. The views are also the preview of the result.
 
 ## Steps
 
-1. **Build the scene.** Follow [references/scene.md](references/scene.md). It starts by agreeing
-   with the person how to work, with Blender as the preferred place, then poses the images,
-   generates views around the main part of the scene, and shows them.
+1. **Build the scene.** Follow [references/scene.md](references/scene.md). Its first part is a
+   question to the person about where to work, with Blender as the preferred place. Ask it
+   before anything else. It then poses the images, generates views around the main part of the
+   scene, and shows them.
 
 2. **Check the set as reconstruction input.** The posed frames and the views you kept are the
    input. A good set:
