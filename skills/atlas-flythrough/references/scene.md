@@ -80,46 +80,55 @@ the main part of the scene is.
 
 ## 3. Build the scene out
 
-One image is a single view of a place. Uncover the rest of it a few views at a time, the way a
-person would explore a room: step somewhere new, look around, and let what you find decide where
-to go next. At this stage the question is what is in this place, not where a camera path or a
-viewer will go. That comes after, and it will be better for having a real scene to choose from.
+One image is a single view of a place. This step decides what the rest of the place is: the far
+side of the table, the wall behind the camera, what is round the corner. The model invents
+whatever a camera sees that no frame has shown, and here that is the point. A round takes under
+a minute and costs cents, and you and the person see the result before anything is built on it.
+
+Explore the way a person would walk into a room they had only seen in a photo: go in, cross to
+the other side, turn round and look back. At this stage the question is what is in this place,
+not where a camera path or a viewer will go. That comes after, and it will be better for having
+a real scene to choose from.
 
 Work in rounds:
 
-1. **Place a few cameras** that step away from the frames you have and look somewhere they did
-   not: to each side, further in, back toward where the first camera stood.
+1. **Place a few cameras** that stand somewhere no frame has stood and look at something no
+   frame has shown: from one side of the main subject across to the other, from the far end
+   back toward where the first camera stood, into a corner, through an opening.
 2. **Generate them** as one `atlasGenerate` request, with the frames so far as `contextFrames`
    and `"returnDepth": true`, so each new view joins the scene with its own depth.
 3. **Look at what came back.** Each view shows new surfaces and new open space. Drop a view that
    disagrees with the others.
-4. **Place the next few** using what the new views revealed, in space that is now known to be
-   open, toward what is still unseen.
+4. **Place the next few** from what the new views revealed: floor that turned out to be open, a
+   wall or a doorway nobody had seen.
 
-Two or three rounds, 6 to 12 views in all, is usually enough for a room. Stop when the main part
-of the scene has been seen from all around and there are real choices about where a camera can
-go. A set of views that all look where the source image looked has uncovered nothing.
+**Take big steps.** A new view should show mostly new things. Look through each camera at the
+scene's points before generating it. A frame about half filled with known points is a good
+step. A frame that is nearly full is a view you already have, and a round of those leaves the
+scene where it was. A frame with only a sliver of known points gives the model too little to
+hold on to, and that view tends to disagree with the others; reach that spot a round later.
 
-From one image alone, the model only follows a camera that turns about half the field of view
-or moves about a third of the typical depth; past that it invents what it shows. That is why
-the scene grows outward in rounds: each round gives the next one more to stand on.
+**The scene is built when it has been seen from all around.** That means views from opposite
+sides of the main subject, a view from the far end looking back toward where the first camera
+stood, and every wall or edge of the space in at least one view. A room usually takes two or
+three rounds and 6 to 12 views. If every view still faces roughly the way the source image did,
+the scene has not been built, however many views there are.
 
-Where the cameras go is your decision. Good views:
+Where the cameras go is your decision. Two things hold for all of them:
 
-- stand in space the frames so far show as empty. A camera inside an object, behind a wall, or
-  outside what the frames saw gets large invented objects in front of the lens;
-- each have their own position. Views that only turn in place add little for the next round,
-  and a request whose cameras all share one position cannot return depth;
-- overlap what is already known, so the new view agrees with it.
+- They stand in space the frames so far show as empty. A camera inside an object, behind a
+  wall, or outside what the frames saw gets large invented objects in front of the lens.
+- Each has its own position. Views that only turn in place add little for the next round, and
+  a request whose cameras all share one position cannot return depth.
 
 ```sh
 worldlabs tasks run atlasGenerate --request views.json --wait --timeout 900 --json > views_op.json
 worldlabs operations download <views-operation-id> --out views
 ```
 
-The request is short; see [the example's](../assets/example/views-request.json). At current rates
-a request costs 50 credits plus 10 for each view after the first, so a round of four views is
-about 80 credits ($0.08), and it takes under a minute. With at most 11 context frames and 32
+The request is short; see [the example's second round](../assets/example/round-2-request.json).
+At current rates a request costs 50 credits plus 10 for each view after the first, so a round of
+four views is about 80 credits ($0.08), and it takes under a minute. With at most 11 context frames and 32
 targets, depth is reconstructed in the same step; the
 [task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
 

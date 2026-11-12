@@ -1,0 +1,113 @@
+{
+  "contextFrames": [
+    {
+      "imageAsset": {
+        "assetId": "<source image asset id>"
+      },
+      "depth": {
+        "depthAsset": {
+          "assetId": "<source depth asset id>"
+        }
+      },
+      "camera": {
+        "extrinsics": {
+          "position": [
+            0,
+            0.9668,
+            0
+          ],
+          "quaternion": [
+            -0.05953,
+            0.00027,
+            0.00452,
+            0.99822
+          ],
+          "coordinateSystem": "rub"
+        },
+        "intrinsics": {
+          "width": 1280,
+          "height": 720,
+          "fx": 762.31,
+          "fy": 762.31,
+          "cx": 640,
+          "cy": 360
+        }
+      }
+    }
+  ],
+  "targetCameras": [
+    {
+      "extrinsics": {
+        "position": [
+          -1.15,
+          0.97,
+          -1.75
+        ],
+        "quaternion": [
+          -0.05287,
+          -0.49907,
+          -0.03052,
+          0.86441
+        ],
+        "coordinateSystem": "rub"
+      },
+      "intrinsics": {
+        "width": 1280,
+        "height": 720,
+        "fx": 762.31,
+        "fy": 762.31,
+        "cx": 640,
+        "cy": 360
+      }
+    },
+    {
+      "extrinsics": {
+        "position": [
+          1.05,
+          0.97,
+          -1.75
+        ],
+        "quaternion": [
+          -0.05287,
+          0.49907,
+          0.03052,
+          0.86441
+        ],
+        "coordinateSystem": "rub"
+      },
+      "intrinsics": {
+        "width": 1280,
+        "height": 720,
+        "fx": 762.31,
+        "fy": 762.31,
+        "cx": 640,
+        "cy": 360
+      }
+    },
+    {
+      "extrinsics": {
+        "position": [
+          -0.9,
+          0.97,
+          -2.9
+        ],
+        "quaternion": [
+          -0.05822,
+          -0.30015,
+          -0.01836,
+          0.95194
+        ],
+        "coordinateSystem": "rub"
+      },
+      "intrinsics": {
+        "width": 1280,
+        "height": 720,
+        "fx": 762.31,
+        "fy": 762.31,
+        "cx": 640,
+        "cy": 360
+      }
+    }
+  ],
+  "returnDepth": true
+}

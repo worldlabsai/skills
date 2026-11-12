@@ -14,8 +14,9 @@ A good one goes somewhere. The camera travels a real distance through the scene,
 the first frame did not, and ends on a different view from where it began.
 
 The work is in two parts, in this order: build out the scene, then find a path through it. One
-posed image is a single view of a place. Exploring outward from it, a few views at a time,
-uncovers the rest of the space, and that is what gives the camera somewhere to go.
+posed image is a single view of a place. Going in, crossing to the far side and looking back, a
+few views at a time, uncovers the rest of the space, and that is what gives the camera somewhere
+to go.
 
 The shot is chosen in step 2, from the scene. Until then there is no route: do not describe a
 camera move to the person or place views along one. A path planned from the one image has only
@@ -33,12 +34,15 @@ what that image showed to work with.
    views or path, so they watch from the start. Without Blender, work in the shell.
    [references/scene.md](references/scene.md) has the question for each setup and the steps:
    pose the images, build the scene out in rounds of a few views, and show it. At the end of
-   this step there is a scene, not one image: views looking in different directions from
-   different places, which you and the person have both looked at.
+   this step there is a scene, not one image: views from all around it, including from the far
+   side looking back toward where the first camera stood, which you and the person have both
+   looked at. Views that stay beside the first camera and face the way it faced are not that.
 
 2. **Choose the path through the scene you built.** Look at what the views uncovered and pick a
    route that uses it. How you build the cameras is up to you. A good path:
 
+   - crosses the scene: to its far side, or around its main subject. A short arc beside the
+     starting view is not a flythrough;
    - leaves the starting view early and keeps moving, so most of the video is somewhere the
      first frame was not;
    - has a shape a person would describe: down the aisle and round to the windows, through the
@@ -90,8 +94,8 @@ what that image showed to work with.
 
 ## Example
 
-[A complete run](references/example.md): one photo of a potter's studio, seven views around the
-work table, and an eight-second orbit. Its requests and results are in `assets/example/`. It
+[A complete run](references/example.md): one photo of a potter's studio, the room built out in
+three rounds of views, and an eight-second flythrough chosen from what they revealed. Its requests and results are in `assets/example/`. It
 shows one scene's choices, not values to copy.
 
 ## Facts
