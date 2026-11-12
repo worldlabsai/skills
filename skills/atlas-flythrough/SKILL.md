@@ -22,20 +22,26 @@ come out dull. Unless the person asks for a subtle move, plan a path with a dest
 Settle this before step 1. It is the person's choice, not an implementation detail: in Blender
 they can see the scene in 3D and help shape the result.
 
-1. **Check for Blender.** Are Blender tools connected? If not, is Blender 5.3 or newer installed
-   (`blender --version`, or `/Applications/Blender.app` on a Mac)?
-2. **If Blender is connected with the Atlas add-on,** work there.
-3. **If Blender is installed but not connected,** ask once, in one line, whether they want to
-   work in Blender or have you carry on in the shell. Skip the question if they asked for the
-   result in one go.
-4. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
+1. **Check for Blender.** Is Blender 5.3 or newer installed (`blender --version`, or
+   `/Applications/Blender.app` on a Mac)? Is it connected, meaning Blender is open and you can
+   run Python in it through Blender tools?
+2. **If Blender is installed, prefer it.** When it is connected, work there. When it is not, do
+   not fall back to the shell silently: ask the person, in one line, to open Blender or let you
+   set up the connection, with carrying on in the shell as the other choice. Opening Blender is
+   often all it takes. Skip the question only if they asked for the result in one go.
+3. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
    see the scene in 3D. Do not install it for this.
+
+Using Blender this way does not need the Atlas add-on. You can run the tasks with the CLI and
+put the results in Blender to look at; the `atlas-blender` skill covers both that and running
+Atlas from inside Blender with the add-on.
 
 What each place gives you:
 
-- **Blender with the Atlas add-on.** Do steps 1 and 2 there, with the `atlas-blender` skill. You and the person see the
-  posed images as cameras and point clouds in 3D, and cameras can be placed by eye. One add-on
-  request holds at most 128 views, so send a longer path with the CLI.
+- **Blender.** Do the seeing and placing of steps 1 and 2 there, with the `atlas-blender` skill.
+  You and the person see the posed images as cameras and point clouds in 3D, and cameras can be
+  placed by eye. Leave the views and the camera path in the project for the person to inspect.
+  Send the path itself with the CLI.
 - **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need:
   the depth seen from above, and the route over it.
 - **Only connected World Labs tools, no shell.** You can pose the image and generate a few views

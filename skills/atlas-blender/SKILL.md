@@ -1,14 +1,42 @@
 ---
 name: atlas-blender
-description: Use Atlas in Blender to import camera/image/depth projects, pose images into point clouds, place cameras and generate views with Atlas or Chisel, and create native Gaussian splats. Use when the user works in Blender or wants the scene laid out in 3D.
+description: Use Blender to see and shape Atlas scenes in 3D. Load posed images as cameras and point clouds, place cameras by eye, view splats, and optionally run Atlas tasks from inside Blender with the Atlas add-on. Use when Blender is installed or the user works in Blender.
 license: Apache-2.0
 ---
 
-# Atlas for Blender
+# Atlas in Blender
 
-Enable Atlas in Blender 5.3+; see [setup](references/setup.md) for installation and read-only verification. Atlas is a separate Blender add-on from Blender MCP. Use [Blender MCP](https://www.blender.org/lab/mcp-server/) for agent access; this plugin neither installs nor configures it. If Blender MCP is not connected, ask the user whether they want you to install and configure it for them, following [setup](references/setup.md). If they decline, run the Atlas commands through Blender's Python Console, Text Editor, or command line.
+Blender gives you and the user a shared 3D view of an Atlas scene: posed images as cameras with
+point clouds, cameras you can place by eye, and splats you can fly through. There are two ways
+to use it, and the first needs no Atlas add-on.
 
-If this host has no access to Blender, explain the local requirements instead of attempting Blender operations.
+## 1. Blender as the 3D view
+
+Run the Atlas tasks with the CLI (see `atlas-flythrough`, `atlas-splats` and `worldlabs-cli`) and
+put the results in Blender to look at and plan from. This needs Blender 5.3 or newer and a way to
+run Python in it:
+
+- **A live connection.** Blender is open and you reach it through
+  [Blender MCP](https://www.blender.org/lab/mcp-server/). The user watches the scene change. If
+  Blender is installed but you cannot reach it, ask the user to open it, or offer to set the
+  connection up; see [setup](references/setup.md).
+- **No connection.** Build a `.blend` from the shell with
+  [background Blender](references/background.md) and ask the user to open it.
+
+Loading results is one command when the Atlas add-on is installed, and it works offline with no
+API key; see "Import CLI results" in [commands](references/commands.md). Without the add-on,
+create the cameras and point clouds yourself from each frame's camera and depth.
+
+Points and splats draw grey in Solid shading. Switch the viewport to Material Preview or
+Rendered to see their colours.
+
+## 2. Atlas inside Blender, with the add-on
+
+The Atlas add-on poses images, generates views and builds splats from inside Blender, using its
+own API key. Enable it in Blender 5.3+; see [setup](references/setup.md) for installation and
+read-only verification. It is a separate add-on from Blender MCP, and this plugin installs
+neither. If this host has no access to Blender, explain the local requirements instead of
+attempting Blender operations.
 
 Run Atlas's operators inside Blender's Python environment. Read [commands](references/commands.md) when you need call syntax, import formats, or job handling.
 

@@ -26,6 +26,24 @@ print(atlas("project.import", path="/absolute/path/to/project"))
 
 A camera JSON path also works. Atlas prefers `cameras.json`, otherwise one unambiguous supported JSON. Manifests accept a camera list or a `frames`/`cameras` list containing calibration and local image paths. Depth and confidence can be explicit or companion files. Missing or ambiguous inputs produce errors; do not invent calibration.
 
+### Import CLI results
+
+A folder saved by `worldlabs operations download` imports once it has a `cameras.json` listing
+its frames. The frames in `operation.json` already have the shape the importer reads:
+
+```python
+import json
+from pathlib import Path
+
+folder = Path("/absolute/path/to/views")
+frames = json.loads((folder / "operation.json").read_text())["response"]["frames"]
+(folder / "cameras.json").write_text(json.dumps({"frames": frames}))
+print(atlas("project.import", path=str(folder)))
+```
+
+Each frame becomes a camera with its image and a point cloud, placed in Blender's Z-up world.
+This needs no API key and no online access.
+
 For unposed images of the same subject:
 
 ```python
