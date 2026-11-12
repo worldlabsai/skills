@@ -15,7 +15,8 @@ This skill is how that work is done in Blender. It needs Blender 5.3 or newer.
 
 ## Agree how to use Blender
 
-How Blender is used is the user's choice. Ask in one line:
+How Blender is used is the user's choice. Ask in their terms, saying what each choice lets
+them see and what it needs from them:
 
 - **An open window or the background.** In an open Blender you work through
   [Blender MCP](https://www.blender.org/lab/mcp-server/) and the user watches the scene change.

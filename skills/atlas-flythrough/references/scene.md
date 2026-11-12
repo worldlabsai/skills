@@ -34,6 +34,12 @@ question that fits:
 | Blender installed, but the Blender tools or the Atlas add-on missing | Set that up now, or work in the background with what is there? Background work needs neither. |
 | No Blender | Nothing. Work in the shell, and mention once that Blender would let both of you see the scene in 3D. |
 
+Put the question in the person's terms: what each choice lets them see, and what it needs from
+them. Words like "connected" describe your side of it and mean little to them. For example:
+"Blender is installed. I can build this in an open Blender window so you can watch it take
+shape, which needs Blender open and takes me a minute to link up, or build it in the background
+and give you the Blender file at the end. Which would you like?"
+
 `blender --version`, or `/Applications/Blender.app` on a Mac, tells you whether it is installed.
 The `atlas-blender` skill covers working in Blender, with or without the add-on. Atlas tasks
 themselves always run through the `worldlabs` CLI below, or through the add-on.
