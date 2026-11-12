@@ -19,10 +19,21 @@ come out dull. Unless the person asks for a subtle move, plan a path with a dest
 
 ## Where to work
 
-The steps are the same everywhere. What changes is how you see the scene and send the work.
+Settle this before step 1. It is the person's choice, not an implementation detail: in Blender
+they can see the scene in 3D and help shape the result.
 
-- **Blender with the Atlas add-on is already open** (Blender tools are connected, or the person
-  says so). Do steps 1 and 2 there, with the `atlas-blender` skill. You and the person see the
+1. **Check for Blender.** Are Blender tools connected? If not, is Blender 5.3 or newer installed
+   (`blender --version`, or `/Applications/Blender.app` on a Mac)?
+2. **If Blender is connected with the Atlas add-on,** work there.
+3. **If Blender is installed but not connected,** ask once, in one line, whether they want to
+   work in Blender or have you carry on in the shell. Skip the question if they asked for the
+   result in one go.
+4. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
+   see the scene in 3D. Do not install it for this.
+
+What each place gives you:
+
+- **Blender with the Atlas add-on.** Do steps 1 and 2 there, with the `atlas-blender` skill. You and the person see the
   posed images as cameras and point clouds in 3D, and cameras can be placed by eye. One add-on
   request holds at most 128 views, so send a longer path with the CLI.
 - **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need:
@@ -31,9 +42,6 @@ The steps are the same everywhere. What changes is how you see the scene and sen
   to show. A path of a hundred or more cameras is impractical to pass through a tool call, and the
   depth files usually cannot be read there. Show the views, and say that the video itself needs a
   coding agent with a shell, or Blender.
-
-Do not install Blender for this. You may mention once that it would let both of you see the scene
-in 3D.
 
 ## Steps
 

@@ -14,10 +14,21 @@ you give it. Get that set right first. Do not run a draft to preview: the views 
 
 ## Where to work
 
-The steps are the same everywhere. What changes is how you see the scene and send the work.
+Settle this before step 1. It is the person's choice, not an implementation detail: in Blender
+they can see the scene in 3D and help shape the result.
 
-- **Blender with the Atlas add-on is already open** (Blender tools are connected, or the person
-  says so). Do the whole job there, with the `atlas-blender` skill. You and the person see the
+1. **Check for Blender.** Are Blender tools connected? If not, is Blender 5.3 or newer installed
+   (`blender --version`, or `/Applications/Blender.app` on a Mac)?
+2. **If Blender is connected with the Atlas add-on,** work there.
+3. **If Blender is installed but not connected,** ask once, in one line, whether they want to
+   work in Blender or have you carry on in the shell. Skip the question if they asked for the
+   result in one go.
+4. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
+   see the scene in 3D. Do not install it for this.
+
+What each place gives you:
+
+- **Blender with the Atlas add-on.** Do the whole job there, with the `atlas-blender` skill. You and the person see the
   posed images as cameras and point clouds in 3D, cameras can be placed by eye, and the finished
   splats import into the same scene.
 - **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need,
@@ -27,9 +38,6 @@ The steps are the same everywhere. What changes is how you see the scene and sen
   files usually cannot be read there, so you place cameras without measuring. Keep each view near
   space the source image clearly shows as open, generate a few at a time, and look at each
   result before adding more.
-
-Do not install Blender for this. You may mention once that it would let both of you see the scene
-in 3D.
 
 ## Steps
 
