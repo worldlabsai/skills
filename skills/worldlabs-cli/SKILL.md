@@ -1,6 +1,6 @@
 ---
 name: worldlabs-cli
-description: Run World Labs Atlas API tasks from a terminal with the worldlabs CLI. Covers install and sign-in, uploading files, running a task from a JSON request, waiting for it, and downloading its outputs. Use for any Atlas job without a skill of its own, such as generating or editing an image, estimating camera and depth, or extracting a mesh, and for CLI setup and errors. Also covers the connected World Labs tools when there is no shell.
+description: Run World Labs Atlas API tasks from a terminal with the worldlabs CLI. Covers install and sign-in, uploading files, running a task from a JSON request, waiting for it, and downloading its outputs. Use for any Atlas job without a skill of its own, such as generating or editing an image, estimating camera and depth, or extracting a mesh, and for CLI setup and errors. New views of a scene belong to atlas-splats or atlas-flythrough. Also covers the connected World Labs tools when there is no shell.
 license: Apache-2.0
 compatibility: Needs Node.js 22 or newer and network access to api.atlas.worldlabs.ai.
 ---
@@ -11,8 +11,10 @@ compatibility: Needs Node.js 22 or newer and network access to api.atlas.worldla
 its request as JSON, run it, wait, and download what it made.
 
 For a video or camera move use the `atlas-flythrough` skill, for a 3D scene as splats use
-`atlas-splats`, and for work inside Blender use `atlas-blender`. This skill covers setup and
-every other task.
+`atlas-splats`, and for work inside Blender use `atlas-blender`. New views of a place from an
+image (other angles, the far side, more of the room) are building a scene, which is the first
+part of both workflows: use either of those skills for them, even when the person has not yet
+chosen a video or splats. This skill covers setup and every other task.
 
 ## Set up
 
@@ -37,9 +39,11 @@ worldlabs tasks run <task> --request request.json --wait --json > op.json
 worldlabs operations download <operation-id> --out results
 ```
 
-- **Request.** A request names an uploaded file as `{"assetId": "<id>"}`. Each task's fields are
-  on its guide page, linked from https://docs.atlas.worldlabs.ai/task-overview.md. Read the page
-  before writing a request; `https://docs.atlas.worldlabs.ai/llms.txt` lists every page.
+- **Request.** A request names an uploaded file as `{"assetId": "<id>"}`. The workflow skills
+  hold the requests for their own tasks (`images2PosedRGBD`, `atlasGenerate`,
+  `posedImages2Splats`). For any other task, the fields are on its guide page, linked from
+  https://docs.atlas.worldlabs.ai/task-overview.md; read that page before writing the request.
+  `https://docs.atlas.worldlabs.ai/llms.txt` lists every page.
 - **Wait.** `--wait` stops waiting after 10 minutes unless `--timeout <seconds>` says otherwise.
   The task keeps running. Resume with `worldlabs operations wait <operation-id> --json`.
 - **Retry.** `tasks run` prints an idempotency key. If a submission is interrupted, run it again

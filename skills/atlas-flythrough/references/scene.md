@@ -1,9 +1,13 @@
 # Build the scene
 
-A video and splats start the same way: agree how to work, pose the images, build the scene out
-a few views at a time, and look at it with the person before the long step. This file is identical in
-`atlas-flythrough` and `atlas-splats`. If posed views of the scene already exist from earlier in
-the session, reuse them and go to the long step.
+A video and splats start the same way: agree how to work, pose the images, and build the scene
+out a few views at a time until it is blocked out with no gaps. This file is identical in
+`atlas-flythrough` and `atlas-splats`.
+
+Building the scene is also a job on its own. When the person asks for new angles of an image,
+the other side of something, or more of a place, do it this way, starting with where to work,
+whether or not they have chosen a video or splats yet. Views that already exist from earlier in
+the session are the start of the scene: bring them in and keep building from there.
 
 Camera and depth conventions are in [conventions.md](conventions.md). A complete run is in
 [example.md](example.md).
@@ -112,11 +116,16 @@ step. A frame that is nearly full is a view you already have, and a round of tho
 scene where it was. A frame with only a sliver of known points gives the model too little to
 hold on to, and that view tends to disagree with the others; reach that spot a round later.
 
-**The scene is built when it has been seen from all around.** That means views from opposite
+**The scene is built when it is blocked out, with no gaps.** That means views from opposite
 sides of the main subject, a view from the far end looking back toward where the first camera
-stood, and every wall or edge of the space in at least one view. A room usually takes two or
-three rounds and 6 to 12 views. If every view still faces roughly the way the source image did,
-the scene has not been built, however many views there are.
+stood, and every wall, corner and stretch of floor in at least one view. Check from above with
+all the point clouds showing: the floor and walls should be continuous. A hole is a place no
+view has looked at, so put a view on it. A room usually takes three or four rounds and 12 to 16
+views.
+
+Block the whole place out before the path or the reconstruction, whatever route or subject the
+person named. A scene built only along the route you expect has gaps the person finds as soon
+as they look around, and it leaves the path and the splats nothing to work with beyond it.
 
 Where the cameras go is your decision. Two things hold for all of them:
 
@@ -131,7 +140,8 @@ worldlabs operations download <views-operation-id> --out views
 ```
 
 The request is short; see [the example's second round](../assets/example/round-2-request.json).
-With at most 11 context frames and 32 targets, depth is reconstructed in the same step; the
+With at most 11 context frames and 32 targets, depth is reconstructed in the same step, so in
+later rounds pass the frames nearest the new cameras as context, not every frame. The
 [task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
 
 In Blender each round's views appear in the scene as cameras with point clouds, so the person

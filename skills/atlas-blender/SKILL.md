@@ -81,7 +81,7 @@ a clean-up at the end. Use Blender's own features.
 - **The route is shown by Motion Paths** on that camera. Markers added as scene objects show up
   through the lens.
 - **Play works on first open.** The timeline has the shot's length and frame rate and sits on
-  the first frame.
+  the first frame, and it shows the camera's keyframes whatever object is selected.
 - **The window is laid out for watching** as soon as there is a camera path: the view through
   the animated camera beside an overview in which the camera is visible, with overlays on. The
   user sees what the shot will show and where the camera is.
