@@ -9,17 +9,28 @@ compatibility: Needs a shell with ffmpeg and the worldlabs CLI, signed in.
 
 A flythrough is a camera path rendered by `atlasGenerate`: every frame's camera goes in one
 request, and one image comes back per camera. The model follows a path well where it has views of
-the scene to work from. So the work has two parts: a few views all around the scene first, then
+the scene to work from. So the work has two parts: a few views of where the camera will go, then
 the path.
+
+A flythrough should go somewhere. The camera travels a real distance through the scene, shows
+things the first frame did not, and ends on a different view from the one it started on. A camera
+that drifts a little near the source image is not a flythrough, and it is the usual way these
+come out dull. Unless the person asks for a subtle move, plan a path with a destination.
 
 ## Steps
 
 1. **Build the scene.** Follow [references/scene.md](references/scene.md): pose the images,
-   generate a sparse set of views around the main part of the scene, and show them to the person.
-   Skip this if posed views from earlier in the session already cover the scene.
+   generate a sparse set of views, and show them to the person. For a video the views cover the
+   route and what the camera will look at along it, which need not be the full circle. Decide
+   roughly where the path goes first, so the views can make that route possible. Skip this if
+   posed views from earlier in the session already cover it.
 
 2. **Choose the path.** How you build the cameras is up to you. A path that works well:
 
+   - leaves the starting view early and keeps moving. Most of the video is spent somewhere the
+     first frame was not;
+   - has a shape a person would describe: down the aisle and round to the windows, through the
+     doorway and around the table, up and over;
    - starts on a camera the person knows. To open on the photo, make the first camera the posed
      source camera;
    - stays in space the views show as empty, and near where the sparse views stood. The model has
@@ -69,10 +80,8 @@ shows one scene's choices, not values to copy.
 
 ## Notes
 
-- For a short move that stays close to the source view (a push of up to about a third of the
-  typical depth, a turn of up to about half the field of view), the source frame alone is enough
-  context, and step 1 can stop after posing. Wider moves need the sparse views: from one image the
-  model keeps redrawing what the image showed instead of following the camera.
+- If the person asks for a subtle move, such as a slow push on one subject, make that. It is the
+  one case where the source frame alone is enough context.
 - `prompt` is optional and describes the scene, never the camera move or an edit. Leave it out and
   Atlas writes one from the images. To save time on a second request for the same scene, pass the
   first response's `promptUsed` as `prompt` with `"enhancePrompt": false`.

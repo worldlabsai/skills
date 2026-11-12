@@ -38,8 +38,9 @@ stand.
 
 ## 3. Generate a sparse set of views
 
-Generate about 6 to 12 views that together show the main part of the scene from all around. They
-are one `atlasGenerate` request: the posed frames as `contextFrames`, your cameras as
+Generate about 6 to 12 views that together show the main part of the scene. For splats, which
+the person can look at from anywhere, that means from all around. For a video it means along the
+route and toward what the camera will look at. They are one `atlasGenerate` request: the posed frames as `contextFrames`, your cameras as
 `targetCameras`, and `"returnDepth": true` so each view comes back with depth and can be used in
 the long step.
 
@@ -58,10 +59,11 @@ Where the cameras go is your decision. What tends to work:
 - **One request.** Views generated together agree with each other. The model decides the unseen
   sides of the scene once, for all of them.
 
-From one image, a camera can turn about half the field of view, or move about a third of the
-typical depth, and still see mostly what the image showed. Past that the model invents what it
-shows. That is the purpose of this step: the unseen sides are decided here, in a request that
-takes under a minute, and you and the person see them before anything is built on them.
+These views are what let the long step go far. From one image alone, the model only follows a
+camera that turns about half the field of view or moves about a third of the typical depth;
+past that it invents what it shows. So do not plan the long step inside those limits. Place views
+out where you want to go. The unseen parts are decided here, in a request that takes under a
+minute, and you and the person see them before anything is built on them.
 
 ```sh
 worldlabs tasks run atlasGenerate --request views.json --wait --timeout 900 --json > views_op.json

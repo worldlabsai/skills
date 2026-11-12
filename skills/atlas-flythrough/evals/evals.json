@@ -18,6 +18,20 @@
       ]
     },
     {
+      "id": "open-ask",
+      "prompt": "Make a flythrough video of the room in evals/files/bookshop.jpg.",
+      "expected_output": "An MP4 whose camera travels through the shop and ends on a view clearly different from the photo.",
+      "files": [
+        "evals/files/bookshop.jpg"
+      ],
+      "assertions": [
+        "The camera travels a real distance through the room and does not hover near the source view",
+        "The last frame shows something the first frame did not",
+        "Views covering the route were generated and shown before the video request",
+        "The whole camera path was sent as one atlasGenerate request"
+      ]
+    },
+    {
       "id": "short-push-one-shot",
       "prompt": "From evals/files/bookshop.jpg, make a 4-second push toward the display table with a slight turn to the right. Don't check in with me, just deliver the video.",
       "expected_output": "An MP4 of a short push with a right turn, delivered without a check-in.",
