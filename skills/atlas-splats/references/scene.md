@@ -1,12 +1,56 @@
 # Build the scene
 
-A video and splats start the same way: pose the images, generate a small set of views that shows
-the scene from all around, and show them to the person before the long step. This file is
-identical in `atlas-flythrough` and `atlas-splats`. If posed views of the scene already exist from
-earlier in the session, reuse them and go to the long step.
+A video and splats start the same way: agree how to work, pose the images, build the scene out
+a few views at a time, and look at it with the person before the long step. This file is identical in
+`atlas-flythrough` and `atlas-splats`. If posed views of the scene already exist from earlier in
+the session, reuse them and go to the long step.
 
 Camera and depth conventions are in [conventions.md](conventions.md). A complete run is in
 [example.md](example.md).
+
+## Agree how to work
+
+The person directs and you do the work. Two decisions are theirs:
+
+- **Where the work happens.** Blender is the preferred place when it is installed. Both of you
+  see the scene in 3D, they can shape the result, and they keep a project file at the end.
+- **What the result should be.** The subject, how far the camera goes, what they want to be able
+  to look at.
+
+Asking is the default for those two. Ask each in one short line when it comes up. A plain
+request, such as "make me a flythrough", is not a request to skip the questions.
+
+Once they are settled, carry the work through to the finished result without stopping. Show
+each stage as it lands (the posed image, each round of views, the path) so the person can steer
+whenever they want to. They have asked for the result, so the steps that produce it need no
+go-ahead and no price quoted.
+
+Decide for the person only when they say outright that they do not want to be asked, for example
+"don't check in, just deliver it". Then choose what they would most likely choose, and say what
+you chose. For where to work, that is Blender in the background whenever it is installed.
+
+Where to work comes first, before posing or reading further. Check what is there, then ask the
+question that fits:
+
+| What you find | What to ask |
+| --- | --- |
+| Blender 5.3 or newer, connected (it is open and you can run Python in it through Blender tools), with the Atlas add-on | Work in the open window where they can watch, or in the background and hand over the project at the end? |
+| Blender installed, but the Blender tools or the Atlas add-on missing | Set that up now, or work in the background with what is there? Background work needs neither. |
+| No Blender | Nothing. Work in the shell, and mention once that Blender would let both of you see the scene in 3D. |
+
+Put the question in the person's terms: what each choice lets them see, and what it needs from
+them. Words like "connected" describe your side of it and mean little to them. For example:
+"Blender is installed. I can build this in an open Blender window so you can watch it take
+shape, which needs Blender open and takes me a minute to link up, or build it in the background
+and give you the Blender file at the end. Which would you like?"
+
+`blender --version`, or `/Applications/Blender.app` on a Mac, tells you whether it is installed.
+The `atlas-blender` skill covers working in Blender, with or without the add-on. Atlas tasks
+themselves always run through the `worldlabs` CLI below, or through the add-on.
+
+With only connected World Labs tools and no shell, the task tools take the same requests. The
+depth files usually cannot be read there, so cameras are placed without measuring: stay near
+space the image clearly shows as open, generate a few views at a time, and look at each result.
 
 ## 1. Pose the images
 
@@ -28,68 +72,77 @@ worldlabs operations download <pose-operation-id> --out scene
   local `path` and the `assetId`. Later requests name frames by those asset IDs; nothing is
   uploaded again.
 
-## 2. Read the scene
+## 2. See the scene
 
-Open the depth and the camera before placing anything. Find the typical depth, what lies straight
-ahead, the nearest objects, the floor, and the field of view. Decide what the main part of the
-scene is: the object or area the person cares about, which the views will surround. Distances are
-in the depth's units, so this is what tells you how big a move is and where there is room to
-stand.
+Look at the scene before placing anything, and look at it as a picture, not only as numbers. In
+Blender the posed frames are cameras with point clouds. In a shell, draw the depth points from
+above with the camera on them; walls, furniture and open floor show at a glance.
 
-## 3. Generate a sparse set of views
+Find how far away things are, where the floor is, and where there is room to stand. Distances
+are in the depth's units, which is what tells you how big a move is. Settle with the person what
+the main part of the scene is.
 
-Generate about 6 to 12 views that together show the main part of the scene from all around. They
-are one `atlasGenerate` request: the posed frames as `contextFrames`, your cameras as
-`targetCameras`, and `"returnDepth": true` so each view comes back with depth and can be used in
-the long step.
+## 3. Build the scene out
 
-Where the cameras go is your decision. What tends to work:
+One image is a single view of a place. This step decides what the rest of the place is: the far
+side of the table, the wall behind the camera, what is round the corner. The model invents
+whatever a camera sees that no frame has shown, and here that is the point. A round takes under
+a minute, and you and the person see the result before anything is built on it.
 
-- **Around the subject.** Cameras spread around the main part of the scene, each looking at it,
-  at a height a person would stand or sit at. Around a table or a group of furniture that is
-  roughly a ring. In a narrow space it may be a few positions along it, looking both ways.
-- **In empty space the frames saw.** Use the depth to keep every camera where the posed frames
-  show free space. A camera inside an object, behind a wall, or outside what the frames saw gets
-  large invented objects in front of the lens.
-- **Moved, not only turned.** Give each view its own position. Views made by turning in place are
-  weak context for later steps, and a request whose cameras all share one position is rejected
-  when it asks for depth.
-- **Overlapping.** Neighbouring views should share part of what they see.
-- **One request.** Views generated together agree with each other. The model decides the unseen
-  sides of the scene once, for all of them.
+Explore the way a person would walk into a room they had only seen in a photo: go in, cross to
+the other side, turn round and look back. At this stage the question is what is in this place,
+not where a camera path or a viewer will go. That comes after, and it will be better for having
+a real scene to choose from.
 
-From one image, a camera can turn about half the field of view, or move about a third of the
-typical depth, and still see mostly what the image showed. Past that the model invents what it
-shows. That is the purpose of this step: the unseen sides are decided here, in a request that
-takes under a minute, and you and the person see them before anything is built on them.
+Work in rounds:
+
+1. **Place a few cameras** that stand somewhere no frame has stood and look at something no
+   frame has shown: from one side of the main subject across to the other, from the far end
+   back toward where the first camera stood, into a corner, through an opening.
+2. **Generate them** as one `atlasGenerate` request, with the frames so far as `contextFrames`
+   and `"returnDepth": true`, so each new view joins the scene with its own depth.
+3. **Look at what came back.** Each view shows new surfaces and new open space. Drop a view that
+   disagrees with the others.
+4. **Place the next few** from what the new views revealed: floor that turned out to be open, a
+   wall or a doorway nobody had seen.
+
+**Take big steps.** A new view should show mostly new things. Look through each camera at the
+scene's points before generating it. A frame about half filled with known points is a good
+step. A frame that is nearly full is a view you already have, and a round of those leaves the
+scene where it was. A frame with only a sliver of known points gives the model too little to
+hold on to, and that view tends to disagree with the others; reach that spot a round later.
+
+**The scene is built when it has been seen from all around.** That means views from opposite
+sides of the main subject, a view from the far end looking back toward where the first camera
+stood, and every wall or edge of the space in at least one view. A room usually takes two or
+three rounds and 6 to 12 views. If every view still faces roughly the way the source image did,
+the scene has not been built, however many views there are.
+
+Where the cameras go is your decision. Two things hold for all of them:
+
+- They stand in space the frames so far show as empty. A camera inside an object, behind a
+  wall, or outside what the frames saw gets large invented objects in front of the lens.
+- Each has its own position. Views that only turn in place add little for the next round, and
+  a request whose cameras all share one position cannot return depth.
 
 ```sh
 worldlabs tasks run atlasGenerate --request views.json --wait --timeout 900 --json > views_op.json
 worldlabs operations download <views-operation-id> --out views
 ```
 
-The request is short; see [the example's](../assets/example/views-request.json). At current rates
-it costs 50 credits plus 10 for each view after the first, so 8 views are about 120 credits
-($0.12). With at most 11 context frames and 32 targets, depth is reconstructed in the same
-step; the [task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
+The request is short; see [the example's second round](../assets/example/round-2-request.json).
+With at most 11 context frames and 32 targets, depth is reconstructed in the same step; the
+[task guide](https://docs.atlas.worldlabs.ai/atlas-generate.md) covers larger requests.
 
-Look at every view. Objects should keep their position, shape and appearance from view to view,
-and nothing large should block a lens. Drop a view that disagrees with the rest. To replace it or
-to fill a gap, send another request with the good views added to `contextFrames`.
+In Blender each round's views appear in the scene as cameras with point clouds, so the person
+watches the place fill in.
 
 ## 4. Show the person
 
-Put the views on one contact sheet and show it beside the source image. Any tool works; with
-ffmpeg:
+Show the views beside the source image. In Blender they are in the scene as cameras, each with
+its image, depth and point cloud; tell the person they are there to look through and move
+around. In a shell, one contact sheet does it.
 
-```sh
-ffmpeg -pattern_type glob -i 'views/frames_*_image.jpg' -vf "scale=640:-1,tile=4x3" -frames:v 1 views.jpg
-```
-
-Say in a line or two what came from the source and what the model invented, and what the long
-step will cost and how long it takes. Ask whether this is the scene they want. The long step
-costs more, takes longer, and builds on these views, so this is the cheap moment to change
-direction.
-
-If the person asked for the result in one go, or told you not to check in, look at the views
-yourself and carry on.
+Say in a line or two what came from the source and what the model invented, then carry on to
+the long step. If they want something different they will say so, and changing the scene now is
+quick.

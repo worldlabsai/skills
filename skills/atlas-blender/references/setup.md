@@ -30,6 +30,18 @@ through Blender's Python Console, Text Editor, or command line.
 
 If Blender MCP already works with your agent, you only need the Atlas add-on and this skill.
 
+Three things have to be true for the agent to reach Blender. The first two are set up once; the
+third is true only while Blender is running:
+
+1. The Blender MCP server is configured in the agent client.
+2. The Blender MCP add-on is installed and enabled in Blender.
+3. Blender is open and the add-on's local bridge is listening.
+
+If Blender is open and the Blender tools still fail, the bridge has not started. In the session
+where this was checked, the add-on started it only with Blender's **Allow Online Access** on, or
+with Blender launched with `--online-mode`. With all three set up, an agent can open Blender
+itself; ask the user first.
+
 ## Install and configure Atlas
 
 Download [Atlas 0.1.4](https://cdn.atlas.worldlabs.ai/showcase/blender/worldlabs_atlas-0.1.4.zip)

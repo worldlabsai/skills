@@ -10,15 +10,15 @@
       ],
       "assertions": [
         "The image was posed with images2PosedRGBD before any generation",
-        "A sparse set of views around the main part of the scene was generated in one request with depth",
-        "The views were shown to the user, with the cost and wait of the reconstruction, before posedImages2Splats was submitted",
+        "The scene was built out in rounds of views with depth until it was seen from all around",
+        "posedImages2Splats was submitted without quoting a price or asking the user for a go-ahead",
         "posedImages2Splats was submitted exactly once, without refine set to false",
         "The report names the SPZ file, the operation ID, and what the model invented"
       ]
     },
     {
       "id": "one-shot",
-      "prompt": "Make splats from evals/files/bookshop.jpg. I know it costs $5 and takes a while; don't stop to ask me anything.",
+      "prompt": "Make splats from evals/files/bookshop.jpg. Don't stop to ask me anything.",
       "expected_output": "One refined SPZ file, delivered without a check-in.",
       "files": [
         "evals/files/bookshop.jpg"

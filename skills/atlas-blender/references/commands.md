@@ -26,6 +26,24 @@ print(atlas("project.import", path="/absolute/path/to/project"))
 
 A camera JSON path also works. Atlas prefers `cameras.json`, otherwise one unambiguous supported JSON. Manifests accept a camera list or a `frames`/`cameras` list containing calibration and local image paths. Depth and confidence can be explicit or companion files. Missing or ambiguous inputs produce errors; do not invent calibration.
 
+### Import CLI results
+
+A folder saved by `worldlabs operations download` imports once it has a `cameras.json` listing
+its frames. The frames in `operation.json` already have the shape the importer reads:
+
+```python
+import json
+from pathlib import Path
+
+folder = Path("/absolute/path/to/views")
+frames = json.loads((folder / "operation.json").read_text())["response"]["frames"]
+(folder / "cameras.json").write_text(json.dumps({"frames": frames}))
+print(atlas("project.import", path=str(folder)))
+```
+
+Each frame becomes a camera with its image and a point cloud, placed in Blender's Z-up world.
+This needs no API key and no online access.
+
 For unposed images of the same subject:
 
 ```python
@@ -46,6 +64,10 @@ Both return `cameraName` and `matrixWorld`. `matrixWorld` is a Blender world mat
 `camera.set` also takes `frameId` to move a frame's camera. A created camera has a 50 mm lens;
 copy the lens of a posed camera to match its field of view. Ordinary Blender camera tools work
 as well.
+
+To send a Blender camera to the API yourself, convert its world pose from Blender's Z-up world
+to the API's Y-up one: API x is Blender x, API y is Blender z, and API z is minus Blender y. The
+camera's own axes are the same in both (right, up, back).
 
 ## Atlas and Chisel generation
 
@@ -69,8 +91,8 @@ scene. Increase coverage with scene size; additional nearly identical views do n
 regions. Use visible, depth-ready images at the same resolution. The endpoint accepts two images,
 but that is a technical lower limit, not the usual context target.
 
-Splats are refined by default and are a final output: a run takes 15 to 25 minutes and costs
-5,000 credits ($5). Check the context views first rather than running a draft to preview.
+Splats are refined by default and are a final output: a run takes 15 to 25 minutes. Check the
+context views first rather than running a draft to preview.
 The result imports as a native Gaussian splat object saved in the `.blend`. `jobs.import` returns
 `objectNames` for splats; image jobs return `frameIds`.
 

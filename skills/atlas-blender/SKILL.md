@@ -1,37 +1,97 @@
 ---
 name: atlas-blender
-description: Use Atlas in Blender to import camera/image/depth projects, pose images into point clouds, place cameras and generate views with Atlas or Chisel, and create native Gaussian splats. Use when the user works in Blender or wants the scene laid out in 3D.
+description: Use Blender to see and shape Atlas scenes in 3D. Load posed images as cameras and point clouds, place cameras by eye, animate a camera path, view splats, and optionally run Atlas tasks from inside Blender with the Atlas add-on. Use when Blender is installed or the user works in Blender.
 license: Apache-2.0
 ---
 
-# Atlas for Blender
+# Atlas in Blender
 
-Enable Atlas in Blender 5.3+; see [setup](references/setup.md) for installation and read-only verification. Atlas is a separate Blender add-on from Blender MCP. Use [Blender MCP](https://www.blender.org/lab/mcp-server/) for agent access; this plugin neither installs nor configures it. If Blender MCP is not connected, ask the user whether they want you to install and configure it for them, following [setup](references/setup.md). If they decline, run the Atlas commands through Blender's Python Console, Text Editor, or command line.
+Blender is where you and the user can both see an Atlas scene: posed images as cameras with
+point clouds, cameras placed by eye, a camera path on the timeline, and splats to fly through.
+It is the preferred place for Atlas work when it is installed.
 
-If this host has no access to Blender, explain the local requirements instead of attempting Blender operations.
+The method for a video or for splats is in the `atlas-flythrough` and `atlas-splats` skills.
+This skill is how that work is done in Blender. It needs Blender 5.3 or newer.
 
-Run Atlas's operators inside Blender's Python environment. Read [commands](references/commands.md) when you need call syntax, import formats, or job handling.
+## Agree how to use Blender
 
-Import exports containing camera JSON, images, depth, and confidence directly; they already have poses. Inspect unfamiliar layouts rather than assuming an exact folder structure or re-posing calibrated images.
+How Blender is used is the user's choice. Ask in their terms, saying what each choice lets
+them see and what it needs from them:
 
-When assembling posed images into a shared scene, read [scene placement](references/scene-placement.md) for the concepts. Choose your own placement and inspection methods.
+- **An open window or the background.** In an open Blender you work through
+  [Blender MCP](https://www.blender.org/lab/mcp-server/) and the user watches the scene change.
+  In the background you build a `.blend` from the shell and hand it over at the end; see
+  [background](references/background.md).
+- **Anything missing.** If the Blender tools or the Atlas add-on are not there, ask whether the
+  user wants them set up; see [setup](references/setup.md). This plugin installs neither, and
+  background work needs neither.
 
-Camera visibility controls Atlas context. **Points** toggles point clouds independently. Use ordinary Blender tools and scene state for everything else.
+## What the Atlas add-on adds
 
-## From images to a video or splats
+Blender alone is enough to look at and plan a scene. Atlas tasks then run through the
+`worldlabs` CLI, and you bring the results in.
 
-The work has the same shape as outside Blender, and Blender lets you and the user see it in 3D:
+The Atlas add-on makes two things easier:
 
-1. Pose the images. Their cameras and point clouds appear in the scene.
-2. Place about 6 to 12 target cameras around the main part of the scene, in space the point
-   clouds show as empty, each looking at it. Generate them in one request with depth. Where they
-   go is your call; look through them, or at the scene from above, before generating.
-3. Show the user the generated views and the scene, and say what the model invented. Skip the
-   check-in if they asked for the result in one go.
-4. Then do the long step. For splats, run `splat` once on the views that agree with each other.
-   For a video, generate the camera path as one request with the views as context.
+- **Loading results.** One import turns a folder of posed frames into cameras with images and
+  point clouds. It works offline and needs no API key; see "Import CLI results" in
+  [commands](references/commands.md). Without the add-on, build the cameras and point clouds
+  from each frame's camera and depth yourself.
+- **Running Atlas from inside Blender.** It can pose images, generate views from the cameras in
+  the scene, and build splats, using its own API key. Read [commands](references/commands.md)
+  for the calls and job handling.
 
-With a shell and no open Blender session, run the same commands in
-[background Blender](references/background.md).
+## The steps, in Blender
+
+| Step | In Blender |
+| --- | --- |
+| Pose the images | The add-on's `pose`, or pose with the CLI and import the result |
+| See the scene | The viewport: through a posed camera, or from above |
+| Place views | Ordinary camera tools, or `camera.create` and `camera.set`, in space the point clouds show as empty |
+| Generate views | The add-on's `generate` with depth, or the CLI with the cameras' poses |
+| Show the person | The scene itself, with each generated image on its camera |
+| Camera path | A camera with a few keyframes; its pose read at each frame is what you send to Atlas |
+| Video | The CLI for a path of any length; the add-on's `generate` holds up to 128 views, context included |
+| Splats | The add-on's `splat`, or the CLI; the result imports into the same scene as a native object |
+
+When placing separately posed images in one scene, read
+[scene placement](references/scene-placement.md). Camera visibility decides which frames the
+add-on uses as context; **Points** toggles the point clouds on their own.
+
+## Work the way Blender is used
+
+From the first camera you place, the scene should look and behave like any Blender project. The
+user may be watching, and may take over at any point, so this is how to work throughout and not
+a clean-up at the end. Use Blender's own features.
+
+- **One window and one scene for the whole job.** The window the user is watching is where
+  every result lands: the posed images, each round of views, the camera path and the splats,
+  each kind in its own collection so the user can show or hide it. The scene will have unsaved
+  changes most of the time, because you are making them; save it yourself as you go. A second
+  Blender window splits the work across two places and leaves the user watching the wrong one.
+- **A camera move is an animated camera with a few keyframes**, one at each place the shot
+  changes, and Blender's own interpolation between them. The user can then retime or reshape it
+  in the timeline and graph editor like any animation. A key on every frame takes that away. If
+  the user wants to reshape the shot by dragging handles, it is a camera on a Bezier curve with
+  a Follow Path constraint.
+- **The dense cameras for Atlas are read from the animation, not stored in it.** Step through
+  the shot's frames and take the camera's world matrix at each one; that gives one camera per
+  frame from however few keyframes there are. After the user edits the animation, read them
+  again.
+- **The route is shown by Motion Paths** on that camera. Markers added as scene objects show up
+  through the lens.
+- **Play works on first open.** The timeline has the shot's length and frame rate and sits on
+  the first frame.
+- **The window is laid out for watching** as soon as there is a camera path: the view through
+  the animated camera beside an overview in which the camera is visible, with overlays on. The
+  user sees what the shot will show and where the camera is.
+- **Colours show.** Points and splats draw grey in Solid shading, so the viewports are in
+  Material Preview or Rendered.
+- **Blender and Atlas agree.** What plays in Blender is the path that was rendered. The viewport
+  shows the estimated point cloud; the video holds the finished frames.
+
+Before handing over, save, then check the saved file by opening it in background Blender, which
+shows no window: step through the shot and look through the camera near the start and the end.
+Give the user the file's path with the result.
 
 For Atlas concepts, see the [Atlas documentation](https://docs.atlas.worldlabs.ai/how-to-use-atlas).
