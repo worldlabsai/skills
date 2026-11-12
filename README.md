@@ -8,13 +8,29 @@ Agent skills for World Labs Atlas, packaged as one plugin for Codex and Claude C
 | --- | --- |
 | `atlas-flythrough` | Make a camera-move video through a scene from one or more images. |
 | `atlas-splats` | Turn one or more images into a 3D scene as Gaussian splats. |
-| `atlas-blender` | Import calibrated projects, pose images, place cameras, generate views, and create native Gaussian splats in Blender. |
+| `atlas-blender` | See and shape Atlas scenes in Blender: posed images as cameras and point clouds, a camera path on the timeline, native splats. The Atlas add-on is optional. |
 | `worldlabs-cli` | Set up the World Labs CLI and run any other Atlas API task with it. |
 
-`atlas-flythrough` and `atlas-splats` start the same way: pose the images, generate a few views
-around the main part of the scene, and show them to the user before the long step. Each skill is
-complete without the others, so they carry identical copies of that shared material; see
-[Development](#development).
+## How the skills are built
+
+Edit the skills from these ideas. When a session shows a problem, find which idea the text
+failed to carry and fix that, instead of appending a rule.
+
+- **The person directs; the agent does the work.** Where the work happens, what the result
+  should be, and when to spend on the long step are the person's decisions. The agent asks each
+  in one line, and decides for itself only when asked for the result in one go.
+- **Blender is the preferred place** when it is installed, because both of them can see the
+  scene in 3D. The Atlas add-on is optional.
+- **Look before building.** A few views come before the long step, and the result is looked at
+  before it is handed over.
+- **Say what good looks like.** The skills describe a good path or a good set of views and leave
+  the camera placement to the agent. Code appears only for calls to our own tools.
+- **Hand over things the person can use:** the video or splats, the project file, and what the
+  model invented.
+- **Method and place are separate.** `atlas-flythrough` and `atlas-splats` hold the method.
+  `atlas-blender` and `worldlabs-cli` hold how to do it in one place. Each skill is complete
+  without the others, so the two method skills carry identical copies of their shared material;
+  see [Development](#development).
 
 ## Install
 

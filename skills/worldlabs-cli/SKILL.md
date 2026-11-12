@@ -50,7 +50,9 @@ worldlabs operations download <operation-id> --out results
   each file's local path. If the command is missing, update the CLI.
 - **Errors.** The CLI does not print the API's reason. HTTP 422 means the request body was
   rejected: check it against the task's guide page. HTTP 402 means the project is out of credits
-  or over its spend limit. HTTP 401 or 403 is the key or its permissions.
+  or over its spend limit. HTTP 401 or 403 is the key or its permissions. An operation that ends
+  `THROTTLED` hit a capacity limit, not a problem with the request: tell the person, wait a few
+  minutes, and run it again. See https://docs.atlas.worldlabs.ai/errors.md
 
 Tasks spend the project's credits (1,000 credits are $1). Say what a task costs before running
 one that costs more than a few cents, and do not rerun a paid task to see whether the result

@@ -2,85 +2,47 @@
 name: atlas-flythrough
 description: Make a camera-move video through a scene (flythrough, walkthrough, orbit, push-in, pan) from one or more photos or a generated image with World Labs Atlas. Use when the user wants a video or a camera move from images.
 license: Apache-2.0
-compatibility: Works best in a shell with ffmpeg and the worldlabs CLI, signed in. Blender with the Atlas add-on is optional.
+compatibility: Needs the worldlabs CLI, signed in, and ffmpeg. Blender is preferred when installed.
 ---
 
 # Atlas flythrough
 
-A flythrough is a camera path rendered by `atlasGenerate`: every frame's camera goes in one
-request, and one image comes back per camera. The model follows a path well where it has views of
-the scene to work from. So the work has two parts: a few views of where the camera will go, then
-the path.
+A flythrough is a camera path rendered by `atlasGenerate`: one camera per frame, all in one
+request, one image back per camera.
 
-A flythrough should go somewhere. The camera travels a real distance through the scene, shows
-things the first frame did not, and ends on a different view from the one it started on. A camera
-that drifts a little near the source image is not a flythrough, and it is the usual way these
-come out dull. Unless the person asks for a subtle move, plan a path with a destination.
-
-## Where to work
-
-Blender is the preferred place for this work. The person sees the scene in 3D, can shape the
-result, and ends up with a project they can keep. Where to work is their choice, so check what
-is there and then ask. Do this before step 1.
-
-1. **Check.** Is Blender 5.3 or newer installed (`blender --version`, or
-   `/Applications/Blender.app` on a Mac)? Is it connected, meaning Blender is open and you can
-   run Python in it through Blender tools? Is the Atlas add-on installed in it?
-2. **Ask one short question that fits what you found.**
-   - Everything is set up: would they like to watch the scene come together in an open Blender
-     window, or have you work in the background and hand over the project at the end?
-   - Blender is installed, but the Blender tools or the Atlas add-on are missing: would they like
-     you to set that up now, or work in the background with what is there? Background work needs
-     neither, and the add-on is optional.
-   - Blender is not installed: carry on in the shell, and mention once that Blender would let
-     both of you see the scene in 3D. Do not install it for this.
-3. **Skip the question only when the person asked for the result in one go.** Then use Blender
-   in the background if it is installed.
-
-The same goes for the other choices that change what the person gets: what the shot does, and
-whether to spend on the long step. Ask in one line instead of guessing.
-
-What each place gives you:
-
-- **Blender.** Do the seeing and placing of steps 1 and 2 there, with the `atlas-blender` skill.
-  You and the person see the posed images as cameras and point clouds in 3D, and cameras can be
-  placed by eye. The camera path is an ordinary animated Blender camera, and the poses you send
-  to Atlas are read from it, so what plays in Blender is what gets rendered. Send the path
-  itself with the CLI.
-- **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need:
-  the depth seen from above, and the route over it.
-- **Only connected World Labs tools, no shell.** You can pose the image and generate a few views
-  to show. A path of a hundred or more cameras is impractical to pass through a tool call, and the
-  depth files usually cannot be read there. Show the views, and say that the video itself needs a
-  coding agent with a shell, or Blender.
+A good one goes somewhere. The camera travels a real distance through the scene, shows things
+the first frame did not, and ends on a different view from where it began. The model follows a
+path where it has views of the scene to work from, so the work is in two parts: a few views of
+where the camera will go, then the path.
 
 ## Steps
 
-1. **Build the scene.** Follow [references/scene.md](references/scene.md): pose the images,
-   generate a sparse set of views, and show them to the person. For a video the views cover the
-   route and what the camera will look at along it, which need not be the full circle. Decide
-   roughly where the path goes first, so the views can make that route possible. Skip this if
-   posed views from earlier in the session already cover it.
+1. **Build the scene.** Follow [references/scene.md](references/scene.md). It starts by agreeing
+   with the person how to work, with Blender as the preferred place, then poses the images,
+   generates views along the route, and shows them. Decide roughly where the path goes before
+   placing the views, so they make that route possible.
 
-2. **Choose the path.** How you build the cameras is up to you. A path that works well:
+2. **Choose the path.** How you build the cameras is up to you. A good path:
 
-   - leaves the starting view early and keeps moving. Most of the video is spent somewhere the
+   - leaves the starting view early and keeps moving, so most of the video is somewhere the
      first frame was not;
    - has a shape a person would describe: down the aisle and round to the windows, through the
-     doorway and around the table, up and over;
-   - starts on a camera the person knows. To open on the photo, make the first camera the posed
-     source camera;
-   - stays in space the views show as empty, and near where the sparse views stood. The model has
-     seen the scene from those places. Check the stretch between the source camera and the first
-     view too: a straight line between two good positions can pass through a door frame;
-   - keeps the subject in frame the way the person described the move;
-   - has one camera per video frame (seconds x frame rate; 24 frames a second is a good default),
-     evenly and closely spaced so the motion reads as smooth.
+     doorway and around the table;
+   - opens on a view the person knows. To open on the photo, the first camera is its posed
+     camera;
+   - stays in open space, near where the views stood. Check the stretches between them too: a
+     straight line between two open positions can pass through a door frame;
+   - has one camera per frame (seconds x frame rate; 24 a second is a good default), evenly and
+     closely spaced.
 
-   Check the path before paying for it. Confirm that turns go the way the person asked and that no
-   camera is inside an object. A sign error costs a full request.
+   Make the move the person asked for. If they want a slow push on one subject, that is the
+   shot, and the posed image alone is enough context for it.
 
-3. **Generate once.** Tell the person the cost first: at current rates, 40 credits plus 8 for each
+   In Blender the path is an animated camera, and the cameras you send are its pose at each
+   frame. In a shell, draw the route over the scene and check that turns go the way the person
+   asked.
+
+3. **Generate once.** Say what it costs first: at current rates, 40 credits plus 8 for each
    frame after the first, so 192 frames are about 1,570 credits ($1.57). It takes one to three
    minutes.
 
@@ -88,30 +50,28 @@ What each place gives you:
    worldlabs tasks run atlasGenerate --request path.json --wait --timeout 1800 --json > path_op.json
    ```
 
-   `contextFrames` holds the posed source frames and the sparse views that looked right, each with
-   its camera and depth. `targetCameras` holds the path in order. Set `"returnDepth": false`. See
+   `contextFrames` holds the posed frames and the views you kept, each with its camera and
+   depth. `targetCameras` holds the path in order. Set `"returnDepth": false`. See
    [the example request](assets/example/path-request.json).
 
-   Send the whole path in one request. Frames from separate requests do not match each other, so
-   do not split a path into batches or splice in frames from an earlier request. More than a
-   thousand frames fit in one request. If the wait times out, resume with
-   `worldlabs operations wait <operation-id> --json`; do not submit again.
+   The whole path goes in one request, because frames from separate requests do not match each
+   other. More than a thousand frames fit. If the wait times out, resume with
+   `worldlabs operations wait <operation-id> --json`.
 
-4. **Assemble and look.**
+4. **Hand it over.**
 
    ```sh
    worldlabs operations download <path-operation-id> --out frames
    ffmpeg -framerate 24 -pattern_type glob -i 'frames/frames_*_image.jpg' -c:v libx264 -pix_fmt yuv420p flythrough.mp4
    ```
 
-   Frames are named in order (`frames_000_image.jpg`, ...); use the extension the files have. Look
-   at about a dozen frames spread through the video. The first should match its camera's view, the
-   motion should go the way the person asked, and objects should keep their shape. Report the
-   video, the operation IDs, and what the model invented.
+   Look at about a dozen frames spread through the video before you report. The first should
+   match its camera's view, the motion should go the way the person asked, and objects should
+   keep their shape.
 
-   When Blender was used, hand over the `.blend` with the video, not the video alone. It holds
-   the posed views, the point clouds and the animated camera, and it should play the shot when
-   the person presses Play; see "Leave a normal Blender project" in the `atlas-blender` skill.
+   Give the person the video, the operation IDs, and what the model invented. When Blender was
+   used, give them the project file as well; the `atlas-blender` skill says what it should
+   contain.
 
 ## Example
 
@@ -119,16 +79,16 @@ What each place gives you:
 work table, and an eight-second orbit. Its requests and results are in `assets/example/`. It
 shows one scene's choices, not values to copy.
 
-## Notes
+## Facts
 
-- If the person asks for a subtle move, such as a slow push on one subject, make that. It is the
-  one case where the source frame alone is enough context.
-- `prompt` is optional and describes the scene, never the camera move or an edit. Leave it out and
-  Atlas writes one from the images. To save time on a second request for the same scene, pass the
-  first response's `promptUsed` as `prompt` with `"enhancePrompt": false`.
-- An HTTP 422 means the request was rejected, not the key. The CLI does not print the reason;
-  check sizes, depth on every context frame, and the camera fields against
+- `prompt` describes the scene, never the camera move. Leave it out and Atlas writes one from
+  the images. For a second request on the same scene, pass the first response's `promptUsed` as
+  `prompt` with `"enhancePrompt": false` to save time.
+- Frames are named in path order (`frames_000_image.jpg`, ...). Use the extension the files have.
+- An HTTP 422 means the request was rejected. The CLI does not print the reason; check sizes,
+  depth on every context frame, and the camera fields against
   [conventions](references/conventions.md).
-- If `worldlabs operations download` is missing, update the CLI:
-  `npm install -g @worldlabsai/cli@latest`. Setup and other tasks are in the `worldlabs-cli` skill.
-- Request fields and limits: https://docs.atlas.worldlabs.ai/atlas-generate.md
+- A path of a hundred or more cameras does not fit through a connected tool call. Without a
+  shell, show the views and say the video needs a coding agent with a shell.
+- CLI setup, errors and other tasks are in the `worldlabs-cli` skill. Request fields and limits:
+  https://docs.atlas.worldlabs.ai/atlas-generate.md
