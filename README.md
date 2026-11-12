@@ -29,6 +29,9 @@ failed to carry and fix that, instead of appending a rule.
   job on its own too: a request for new angles of an image is done the same way.
   The path or the splats come from the scene,
   and each result is looked at before it is handed over.
+- **The skills are the method; the docs are reference.** A workflow skill and its scene file
+  hold everything needed to do the work. Agents open the docs for a task's fields and limits,
+  not for how to do the workflow.
 - **Say what good looks like.** The skills describe a good path or a good set of views and leave
   the camera placement to the agent. Code appears only for calls to our own tools.
 - **Hand over things the person can use:** the video or splats, the project file, and what the

@@ -14,6 +14,12 @@ While refining it generates its own dense views, which it does not return.
 What you control is the set of views you give it, so a good result comes from getting that set
 right. The views are also the preview of the result.
 
+This file and [references/scene.md](references/scene.md) are the method, and the request shapes
+are in `assets/example/`. Read both files in full before starting. The Atlas docs are reference
+for a task's fields and limits: open a task's page when a request needs a field these files do
+not show, or when one is rejected. The docs also have shorter workflow pages written for people;
+where they differ from these files, follow these files.
+
 ## Steps
 
 1. **Agree where to work, then build the scene.** Before anything else, check whether Blender

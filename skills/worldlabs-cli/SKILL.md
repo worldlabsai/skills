@@ -39,9 +39,11 @@ worldlabs tasks run <task> --request request.json --wait --json > op.json
 worldlabs operations download <operation-id> --out results
 ```
 
-- **Request.** A request names an uploaded file as `{"assetId": "<id>"}`. Each task's fields are
-  on its guide page, linked from https://docs.atlas.worldlabs.ai/task-overview.md. Read the page
-  before writing a request; `https://docs.atlas.worldlabs.ai/llms.txt` lists every page.
+- **Request.** A request names an uploaded file as `{"assetId": "<id>"}`. The workflow skills
+  hold the requests for their own tasks (`images2PosedRGBD`, `atlasGenerate`,
+  `posedImages2Splats`). For any other task, the fields are on its guide page, linked from
+  https://docs.atlas.worldlabs.ai/task-overview.md; read that page before writing the request.
+  `https://docs.atlas.worldlabs.ai/llms.txt` lists every page.
 - **Wait.** `--wait` stops waiting after 10 minutes unless `--timeout <seconds>` says otherwise.
   The task keeps running. Resume with `worldlabs operations wait <operation-id> --json`.
 - **Retry.** `tasks run` prints an idempotency key. If a submission is interrupted, run it again
