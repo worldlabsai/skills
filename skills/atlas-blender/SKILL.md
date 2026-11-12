@@ -52,7 +52,7 @@ The Atlas add-on makes two things easier:
 | Show the person | The scene itself, with each generated image on its camera |
 | Camera path | A camera with a few keyframes; its pose read at each frame is what you send to Atlas |
 | Video | The CLI for a path of any length; the add-on's `generate` holds up to 128 views, context included |
-| Splats | The add-on's `splat`, or the CLI; the result imports as a native object |
+| Splats | The add-on's `splat`, or the CLI; the result imports into the same scene as a native object |
 
 When placing separately posed images in one scene, read
 [scene placement](references/scene-placement.md). Camera visibility decides which frames the
@@ -64,6 +64,11 @@ From the first camera you place, the scene should look and behave like any Blend
 user may be watching, and may take over at any point, so this is how to work throughout and not
 a clean-up at the end. Use Blender's own features.
 
+- **One window and one scene for the whole job.** The window the user is watching is where
+  every result lands: the posed images, each round of views, the camera path and the splats,
+  each kind in its own collection so the user can show or hide it. The scene will have unsaved
+  changes most of the time, because you are making them; save it yourself as you go. A second
+  Blender window splits the work across two places and leaves the user watching the wrong one.
 - **A camera move is an animated camera with a few keyframes**, one at each place the shot
   changes, and Blender's own interpolation between them. The user can then retime or reshape it
   in the timeline and graph editor like any animation. A key on every frame takes that away. If
@@ -85,7 +90,8 @@ a clean-up at the end. Use Blender's own features.
 - **Blender and Atlas agree.** What plays in Blender is the path that was rendered. The viewport
   shows the estimated point cloud; the video holds the finished frames.
 
-Before handing over, save, reopen the saved file and play it through, looking through the
-camera near the start and the end. Give the user the file's path with the result.
+Before handing over, save, then check the saved file by opening it in background Blender, which
+shows no window: step through the shot and look through the camera near the start and the end.
+Give the user the file's path with the result.
 
 For Atlas concepts, see the [Atlas documentation](https://docs.atlas.worldlabs.ai/how-to-use-atlas).
