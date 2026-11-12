@@ -19,29 +19,34 @@ come out dull. Unless the person asks for a subtle move, plan a path with a dest
 
 ## Where to work
 
-Settle this before step 1. It is the person's choice, not an implementation detail: in Blender
-they can see the scene in 3D and help shape the result.
+Blender is the preferred place for this work. The person sees the scene in 3D, can shape the
+result, and ends up with a project they can keep. Where to work is their choice, so check what
+is there and then ask. Do this before step 1.
 
-1. **Check for Blender.** Is Blender 5.3 or newer installed (`blender --version`, or
+1. **Check.** Is Blender 5.3 or newer installed (`blender --version`, or
    `/Applications/Blender.app` on a Mac)? Is it connected, meaning Blender is open and you can
-   run Python in it through Blender tools?
-2. **If Blender is installed, prefer it.** When it is connected, work there. When it is not, do
-   not fall back to the shell silently: ask the person, in one line, to open Blender or let you
-   set up the connection, with carrying on in the shell as the other choice. Opening Blender is
-   often all it takes. Skip the question only if they asked for the result in one go.
-3. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
-   see the scene in 3D. Do not install it for this.
+   run Python in it through Blender tools? Is the Atlas add-on installed in it?
+2. **Ask one short question that fits what you found.**
+   - Everything is set up: would they like to watch the scene come together in an open Blender
+     window, or have you work in the background and hand over the project at the end?
+   - Blender is installed, but the Blender tools or the Atlas add-on are missing: would they like
+     you to set that up now, or work in the background with what is there? Background work needs
+     neither, and the add-on is optional.
+   - Blender is not installed: carry on in the shell, and mention once that Blender would let
+     both of you see the scene in 3D. Do not install it for this.
+3. **Skip the question only when the person asked for the result in one go.** Then use Blender
+   in the background if it is installed.
 
-Using Blender this way does not need the Atlas add-on. You can run the tasks with the CLI and
-put the results in Blender to look at; the `atlas-blender` skill covers both that and running
-Atlas from inside Blender with the add-on.
+The same goes for the other choices that change what the person gets: what the shot does, and
+whether to spend on the long step. Ask in one line instead of guessing.
 
 What each place gives you:
 
 - **Blender.** Do the seeing and placing of steps 1 and 2 there, with the `atlas-blender` skill.
   You and the person see the posed images as cameras and point clouds in 3D, and cameras can be
-  placed by eye. Leave the views and the camera path in the project for the person to inspect.
-  Send the path itself with the CLI.
+  placed by eye. The camera path is an ordinary animated Blender camera, and the poses you send
+  to Atlas are read from it, so what plays in Blender is what gets rendered. Send the path
+  itself with the CLI.
 - **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need:
   the depth seen from above, and the route over it.
 - **Only connected World Labs tools, no shell.** You can pose the image and generate a few views
@@ -103,6 +108,10 @@ What each place gives you:
    at about a dozen frames spread through the video. The first should match its camera's view, the
    motion should go the way the person asked, and objects should keep their shape. Report the
    video, the operation IDs, and what the model invented.
+
+   When Blender was used, hand over the `.blend` with the video, not the video alone. It holds
+   the posed views, the point clouds and the animated camera, and it should play the shot when
+   the person presses Play; see "Leave a normal Blender project" in the `atlas-blender` skill.
 
 ## Example
 

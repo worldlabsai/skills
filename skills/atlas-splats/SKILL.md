@@ -14,22 +14,26 @@ you give it. Get that set right first. Do not run a draft to preview: the views 
 
 ## Where to work
 
-Settle this before step 1. It is the person's choice, not an implementation detail: in Blender
-they can see the scene in 3D and help shape the result.
+Blender is the preferred place for this work. The person sees the scene in 3D, can shape the
+result, and ends up with a project they can keep. Where to work is their choice, so check what
+is there and then ask. Do this before step 1.
 
-1. **Check for Blender.** Is Blender 5.3 or newer installed (`blender --version`, or
+1. **Check.** Is Blender 5.3 or newer installed (`blender --version`, or
    `/Applications/Blender.app` on a Mac)? Is it connected, meaning Blender is open and you can
-   run Python in it through Blender tools?
-2. **If Blender is installed, prefer it.** When it is connected, work there. When it is not, do
-   not fall back to the shell silently: ask the person, in one line, to open Blender or let you
-   set up the connection, with carrying on in the shell as the other choice. Opening Blender is
-   often all it takes. Skip the question only if they asked for the result in one go.
-3. **If Blender is not installed,** carry on, and mention once that Blender would let both of you
-   see the scene in 3D. Do not install it for this.
+   run Python in it through Blender tools? Is the Atlas add-on installed in it?
+2. **Ask one short question that fits what you found.**
+   - Everything is set up: would they like to watch the scene come together in an open Blender
+     window, or have you work in the background and hand over the project at the end?
+   - Blender is installed, but the Blender tools or the Atlas add-on are missing: would they like
+     you to set that up now, or work in the background with what is there? Background work needs
+     neither, and the add-on is optional.
+   - Blender is not installed: carry on in the shell, and mention once that Blender would let
+     both of you see the scene in 3D. Do not install it for this.
+3. **Skip the question only when the person asked for the result in one go.** Then use Blender
+   in the background if it is installed.
 
-Using Blender this way does not need the Atlas add-on. You can run the tasks with the CLI and
-put the results in Blender to look at; the `atlas-blender` skill covers both that and running
-Atlas from inside Blender with the add-on.
+The same goes for the other choices that change what the person gets: what the shot does, and
+whether to spend on the long step. Ask in one line instead of guessing.
 
 What each place gives you:
 

@@ -39,16 +39,10 @@ folder = Path("/absolute/path/to/views")
 frames = json.loads((folder / "operation.json").read_text())["response"]["frames"]
 (folder / "cameras.json").write_text(json.dumps({"frames": frames}))
 print(atlas("project.import", path=str(folder)))
-
-# Solid shading draws the points grey; Material Preview shows their colours.
-for area in bpy.context.screen.areas:
-    if area.type == "VIEW_3D":
-        area.spaces.active.shading.type = "MATERIAL"
 ```
 
 Each frame becomes a camera with its image and a point cloud, placed in Blender's Z-up world.
-This needs no API key and no online access. Set the shading every time you put points or splats
-in front of the user, and save the project with it.
+This needs no API key and no online access.
 
 For unposed images of the same subject:
 

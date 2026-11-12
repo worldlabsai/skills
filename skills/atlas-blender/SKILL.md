@@ -17,18 +17,42 @@ put the results in Blender to look at and plan from. This needs Blender 5.3 or n
 run Python in it:
 
 - **A live connection.** Blender is open and you reach it through
-  [Blender MCP](https://www.blender.org/lab/mcp-server/). The user watches the scene change. If
-  Blender is installed but you cannot reach it, ask the user to open it, or offer to set the
-  connection up; see [setup](references/setup.md).
-- **No connection.** Build a `.blend` from the shell with
-  [background Blender](references/background.md) and ask the user to open it.
+  [Blender MCP](https://www.blender.org/lab/mcp-server/). The user watches the scene change.
+- **In the background.** Build a `.blend` from the shell with
+  [background Blender](references/background.md) and hand it over at the end.
+
+Ask the user which they want. If the Blender tools or the Atlas add-on are missing, ask whether
+they would like you to set them up; see [setup](references/setup.md). Do not pick for them.
 
 Loading results is one command when the Atlas add-on is installed, and it works offline with no
 API key; see "Import CLI results" in [commands](references/commands.md). Without the add-on,
 create the cameras and point clouds yourself from each frame's camera and depth.
 
-Points and splats draw grey in Solid shading. Switch the viewport to Material Preview or
-Rendered to see their colours.
+## Leave a normal Blender project
+
+Whatever you build, the user should be able to open the file and use it the way they use any
+Blender project. Work with Blender's own features, not stand-ins for them.
+
+- **A camera move is an animated camera.** Keyframe the camera on the timeline. If the user
+  wants to reshape the shot by dragging handles, put the camera on a Bezier curve with a Follow
+  Path constraint instead.
+- **Show the path with Blender's own guides.** Motion Paths on the animated camera draws its
+  route. Do not add spheres, curves or other markers as scene geometry: they show up through the
+  lens.
+- **Play should work on first open.** Set the timeline to the shot's length and frame rate, and
+  leave it on the first frame.
+- **Lay out the window for watching.** Put the view through the camera beside an overview in
+  which the camera is visible, with overlays on, so the user sees the camera move when they
+  press Play.
+- **Show colours.** Points and splats draw grey in Solid shading. Leave the viewports in
+  Material Preview or Rendered.
+- **Keep Blender and Atlas in step.** The cameras sent to Atlas are the animated camera's own
+  pose at each frame. Say that the viewport shows the estimated point cloud, and that the video
+  holds the finished frames.
+- **Check it as the user will.** Save, reopen the saved file, play it through, and look near the
+  start and the end before handing it over. Give the user the file's path along with the result.
+
+All of this can be produced in background Blender when there is no open session.
 
 ## 2. Atlas inside Blender, with the add-on
 
