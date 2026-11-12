@@ -50,7 +50,7 @@ The Atlas add-on makes two things easier:
 | Place views | Ordinary camera tools, or `camera.create` and `camera.set`, in space the point clouds show as empty |
 | Generate views | The add-on's `generate` with depth, or the CLI with the cameras' poses |
 | Show the person | The scene itself, with each generated image on its camera |
-| Camera path | An animated camera; its pose at each frame is what you send to Atlas |
+| Camera path | A camera with a few keyframes; its pose read at each frame is what you send to Atlas |
 | Video | The CLI for a path of any length; the add-on's `generate` holds up to 128 views, context included |
 | Splats | The add-on's `splat`, or the CLI; the result imports as a native object |
 
@@ -63,9 +63,15 @@ add-on uses as context; **Points** toggles the point clouds on their own.
 The user should be able to open the file and use it like any Blender project. Work with
 Blender's own features.
 
-- **A camera move is an animated camera**, keyframed on the timeline. If the user wants to
-  reshape the shot by dragging handles, it is a camera on a Bezier curve with a Follow Path
-  constraint.
+- **A camera move is an animated camera with a few keyframes**, one at each place the shot
+  changes, and Blender's own interpolation between them. The user can then retime or reshape it
+  in the timeline and graph editor like any animation. A key on every frame takes that away. If
+  the user wants to reshape the shot by dragging handles, it is a camera on a Bezier curve with
+  a Follow Path constraint.
+- **The dense cameras for Atlas are read from the animation, not stored in it.** Step through
+  the shot's frames and take the camera's world matrix at each one; that gives one camera per
+  frame from however few keyframes there are. After the user edits the animation, read them
+  again.
 - **The route is shown by Motion Paths** on that camera. Markers added as scene objects show up
   through the lens.
 - **Play works on first open.** The timeline has the shot's length and frame rate and sits on

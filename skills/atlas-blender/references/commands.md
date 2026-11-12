@@ -65,6 +65,10 @@ Both return `cameraName` and `matrixWorld`. `matrixWorld` is a Blender world mat
 copy the lens of a posed camera to match its field of view. Ordinary Blender camera tools work
 as well.
 
+To send a Blender camera to the API yourself, convert its world pose from Blender's Z-up world
+to the API's Y-up one: API x is Blender x, API y is Blender z, and API z is minus Blender y. The
+camera's own axes are the same in both (right, up, back).
+
 ## Atlas and Chisel generation
 
 Use actual target camera names from the scene:
