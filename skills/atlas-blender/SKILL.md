@@ -18,18 +18,20 @@ When assembling posed images into a shared scene, read [scene placement](referen
 
 Camera visibility controls Atlas context. **Points** toggles point clouds independently. Use ordinary Blender tools and scene state for everything else.
 
-## From images to a video or splats
+## A video or splats, in Blender
 
-The work has the same shape as outside Blender, and Blender lets you and the user see it in 3D:
+The method is in the `atlas-flythrough` and `atlas-splats` skills. This is how each of their
+steps is done here:
 
-1. Pose the images. Their cameras and point clouds appear in the scene.
-2. Place about 6 to 12 target cameras around the main part of the scene, in space the point
-   clouds show as empty, each looking at it. Generate them in one request with depth. Where they
-   go is your call; look through them, or at the scene from above, before generating.
-3. Show the user the generated views and the scene, and say what the model invented. Skip the
-   check-in if they asked for the result in one go.
-4. Then do the long step. For splats, run `splat` once on the views that agree with each other.
-   For a video, generate the camera path as one request with the views as context.
+| Step | In Blender |
+| --- | --- |
+| Pose the images | `pose`; the frames appear as cameras with point clouds |
+| See the scene | The viewport: look through a posed camera, or at the scene from above |
+| Place views | `camera.create` and `camera.set`, or ordinary Blender camera tools, in space the point clouds show as empty |
+| Generate views | `generate` with depth, on the cameras you placed |
+| Show the person | The scene itself, and the generated images on their cameras |
+| Splats | `splat`, once; the result imports as a native object |
+| Video | `generate` for a path of up to 128 views, context included; a longer path goes through the CLI |
 
 With a shell and no open Blender session, run the same commands in
 [background Blender](references/background.md).

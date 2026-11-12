@@ -2,7 +2,7 @@
 name: atlas-flythrough
 description: Make a camera-move video through a scene (flythrough, walkthrough, orbit, push-in, pan) from one or more photos or a generated image with World Labs Atlas. Use when the user wants a video or a camera move from images.
 license: Apache-2.0
-compatibility: Needs a shell with ffmpeg and the worldlabs CLI, signed in.
+compatibility: Works best in a shell with ffmpeg and the worldlabs CLI, signed in. Blender with the Atlas add-on is optional.
 ---
 
 # Atlas flythrough
@@ -16,6 +16,24 @@ A flythrough should go somewhere. The camera travels a real distance through the
 things the first frame did not, and ends on a different view from the one it started on. A camera
 that drifts a little near the source image is not a flythrough, and it is the usual way these
 come out dull. Unless the person asks for a subtle move, plan a path with a destination.
+
+## Where to work
+
+The steps are the same everywhere. What changes is how you see the scene and send the work.
+
+- **Blender with the Atlas add-on is already open** (Blender tools are connected, or the person
+  says so). Do steps 1 and 2 there, with the `atlas-blender` skill. You and the person see the
+  posed images as cameras and point clouds in 3D, and cameras can be placed by eye. One add-on
+  request holds at most 128 views, so send a longer path with the CLI.
+- **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need:
+  the depth seen from above, and the route over it.
+- **Only connected World Labs tools, no shell.** You can pose the image and generate a few views
+  to show. A path of a hundred or more cameras is impractical to pass through a tool call, and the
+  depth files usually cannot be read there. Show the views, and say that the video itself needs a
+  coding agent with a shell, or Blender.
+
+Do not install Blender for this. You may mention once that it would let both of you see the scene
+in 3D.
 
 ## Steps
 
@@ -90,6 +108,4 @@ shows one scene's choices, not values to copy.
   [conventions](references/conventions.md).
 - If `worldlabs operations download` is missing, update the CLI:
   `npm install -g @worldlabsai/cli@latest`. Setup and other tasks are in the `worldlabs-cli` skill.
-- No shell: connected World Labs tools take the same request bodies under the same task names,
-  but a long path is impractical to pass through a tool call. Prefer a shell for video.
 - Request fields and limits: https://docs.atlas.worldlabs.ai/atlas-generate.md

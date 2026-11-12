@@ -36,6 +36,10 @@ scene is: the object or area the person cares about, which the views will surrou
 in the depth's units, so this is what tells you how big a move is and where there is room to
 stand.
 
+Find a way to see it, not only to compute it. In Blender the posed frames are already cameras
+and point clouds. In a shell, a picture of the depth points from above, with the camera on it,
+shows walls, furniture and open floor at a glance.
+
 ## 3. Generate a sparse set of views
 
 Generate about 6 to 12 views that together show the main part of the scene. For splats, which
@@ -58,6 +62,11 @@ Where the cameras go is your decision. What tends to work:
 - **Overlapping.** Neighbouring views should share part of what they see.
 - **One request.** Views generated together agree with each other. The model decides the unseen
   sides of the scene once, for all of them.
+
+You can also uncover the scene a view or two at a time: generate, look, add the result to
+`contextFrames`, and place the next camera where the scene is still unknown. That suits a scene
+you cannot see well in advance. Move each new camera to a new position, since a view that only
+turns in place adds little for the next one to build on.
 
 These views are what let the long step go far. From one image alone, the model only follows a
 camera that turns about half the field of view or moves about a third of the typical depth;

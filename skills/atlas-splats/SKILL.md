@@ -2,7 +2,7 @@
 name: atlas-splats
 description: Turn one or more photos or a generated image into a 3D scene as Gaussian splats (an SPZ file) with World Labs Atlas. Use when the user wants a 3D scene, a world to explore, splats, or a scene to view, export or mesh from images.
 license: Apache-2.0
-compatibility: Needs a shell with the worldlabs CLI, signed in.
+compatibility: Works best in a shell with the worldlabs CLI, signed in. Blender with the Atlas add-on is optional.
 ---
 
 # Atlas splats
@@ -11,6 +11,25 @@ compatibility: Needs a shell with the worldlabs CLI, signed in.
 as the final step. One run takes 15 to 25 minutes and costs 5,000 credits ($5). It generates its
 own dense views while refining and does not return them, so what you control is the set of views
 you give it. Get that set right first. Do not run a draft to preview: the views are the preview.
+
+## Where to work
+
+The steps are the same everywhere. What changes is how you see the scene and send the work.
+
+- **Blender with the Atlas add-on is already open** (Blender tools are connected, or the person
+  says so). Do the whole job there, with the `atlas-blender` skill. You and the person see the
+  posed images as cameras and point clouds in 3D, cameras can be placed by eye, and the finished
+  splats import into the same scene.
+- **A shell.** Use the commands below. Nothing draws the scene for you, so draw what you need,
+  such as the depth seen from above with the cameras on it.
+- **Only connected World Labs tools, no shell.** Every step works through the task tools: pose,
+  generate views with depth, and reconstruct, passing each frame's `assetId` along. The depth
+  files usually cannot be read there, so you place cameras without measuring. Keep each view near
+  space the source image clearly shows as open, generate a few at a time, and look at each
+  result before adding more.
+
+Do not install Blender for this. You may mention once that it would let both of you see the scene
+in 3D.
 
 ## Steps
 
