@@ -20,11 +20,18 @@ only what that image showed to work with.
 
 ## Steps
 
-1. **Build the scene.** Follow [references/scene.md](references/scene.md). Its first part is a
-   question to the person about where to work, with Blender as the preferred place. Ask it
-   before anything else. It then poses the images, generates views that uncover the space, and
-   shows them. At the end of this step there is a scene, not one image: several posed views
-   that you and the person have both looked at.
+1. **Agree where to work, then build the scene.** Before anything else, check whether Blender
+   is installed and ask the person where to work. With Blender installed, the choice is:
+
+   - **Open Blender**, so they can watch the scene build and scrub through it; or
+   - **Build in the background** and hand over the `.blend` at the end.
+
+   If they choose the open window, open it as soon as the first image is posed, before any
+   views or path, so they watch from the start. Without Blender, work in the shell.
+   [references/scene.md](references/scene.md) has the question for each setup and the steps:
+   pose the images, generate views that uncover the space, and show them. At the end of this
+   step there is a scene, not one image: several posed views that you and the person have both
+   looked at.
 
 2. **Choose the path through the scene you built.** Look at what the views uncovered and pick a
    route that uses it. How you build the cameras is up to you. A good path:
@@ -46,7 +53,8 @@ only what that image showed to work with.
    frame. In a shell, draw the route over the scene and check that turns go the way the person
    asked.
 
-3. **Generate once.** Say what it costs first: at current rates, 40 credits plus 8 for each
+3. **Generate once.** Show the person the path, say what it costs, and wait for their answer:
+   at current rates, 40 credits plus 8 for each
    frame after the first, so 192 frames are about 1,570 credits ($1.57). It takes one to three
    minutes.
 
@@ -88,7 +96,9 @@ shows one scene's choices, not values to copy.
 - `prompt` describes the scene, never the camera move. Leave it out and Atlas writes one from
   the images. For a second request on the same scene, pass the first response's `promptUsed` as
   `prompt` with `"enhancePrompt": false` to save time.
-- Frames are named in path order (`frames_000_image.jpg`, ...). Use the extension the files have.
+- Frames are named in path order, with indexes padded to the same width (`frames_000_image.jpg`
+  for a long path, `frames_0_image.jpg` for a few views). `operation.json` lists them in order
+  too. Use the extension the files have.
 - An HTTP 422 means the request was rejected. The CLI does not print the reason; check sizes,
   depth on every context frame, and the camera fields against
   [conventions](references/conventions.md).

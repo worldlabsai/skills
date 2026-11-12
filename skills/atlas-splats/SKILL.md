@@ -16,10 +16,16 @@ right. The views are also the preview of the result.
 
 ## Steps
 
-1. **Build the scene.** Follow [references/scene.md](references/scene.md). Its first part is a
-   question to the person about where to work, with Blender as the preferred place. Ask it
-   before anything else. It then poses the images, generates views around the main part of the
-   scene, and shows them.
+1. **Agree where to work, then build the scene.** Before anything else, check whether Blender
+   is installed and ask the person where to work. With Blender installed, the choice is:
+
+   - **Open Blender**, so they can watch the scene build and scrub through it; or
+   - **Build in the background** and hand over the `.blend` at the end.
+
+   If they choose the open window, open it as soon as the first image is posed, before any
+   views or path, so they watch from the start. Without Blender, work in the shell.
+   [references/scene.md](references/scene.md) has the question for each setup and the steps:
+   pose the images, generate views that uncover the scene, and show them.
 
 2. **Check the set as reconstruction input.** The posed frames and the views you kept are the
    input. A good set:
@@ -34,8 +40,8 @@ right. The views are also the preview of the result.
    For a single room, 8 to 16 views in all is a good range. To add coverage, send another
    `atlasGenerate` request with the current views as `contextFrames` and `"returnDepth": true`.
 
-3. **Reconstruct once.** This is the step to confirm with the person: say the cost and the wait
-   and get a yes. The request lists each frame's image, depth and camera; see
+3. **Reconstruct once.** This is the step to confirm with the person: say the cost and the wait,
+   and wait for a yes. The request lists each frame's image, depth and camera; see
    [the example request](assets/example/splats-request.json).
 
    ```sh

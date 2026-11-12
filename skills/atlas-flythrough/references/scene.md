@@ -120,7 +120,10 @@ to fill a gap, send another request with the good views added to `contextFrames`
 
 ## 4. Show the person
 
-Show the views beside the source image: in Blender they are already in the scene, and in a shell
-one contact sheet does it. Say in a line or two what came from the source and what the model
-invented, and what the long step will cost and how long it takes. Ask whether this is the scene
-they want. This is the cheap moment to change direction.
+Show the views beside the source image. In Blender they are in the scene as cameras, each with
+its image, depth and point cloud; tell the person they are there to look through and move
+around. In a shell, one contact sheet does it.
+
+Say in a line or two what came from the source and what the model invented, and what the long
+step will cost and how long it takes. Then ask whether this is the scene they want, and wait
+for the answer. They are being invited to steer, and this is the cheap moment to do it.
